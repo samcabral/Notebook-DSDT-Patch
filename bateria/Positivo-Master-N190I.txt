@@ -1,0 +1,38 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Positivo Master N190I
+
+into device label EC0 code_regex XIF0,\s+16, replace_matched begin IF01,8,IF02,8, end;
+into device label EC0 code_regex XIF1,\s+16, replace_matched begin IF11,8,IF12,8, end;
+into device label EC0 code_regex XIF2,\s+16, replace_matched begin IF21,8,IF22,8, end;
+into device label EC0 code_regex XIF3,\s+16, replace_matched begin IF31,8,IF32,8, end;
+into device label EC0 code_regex XIF4,\s+16, replace_matched begin IF41,8,IF42,8, end;
+into device label EC0 code_regex XIF7,\s+16, replace_matched begin IF71,8,IF72,8, end;
+
+into device label EC0 code_regex XST0,\s+16, replace_matched begin ST01,8,ST02,8, end;
+into device label EC0 code_regex XST1,\s+16, replace_matched begin ST11,8,ST12,8, end;
+into device label EC0 code_regex XST2,\s+16, replace_matched begin ST21,8,ST22,8, end;
+into device label EC0 code_regex XST3,\s+16, replace_matched begin ST31,8,ST32,8, end;
+
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+into method label _BIF code_regex =\s\^\^PCI0\.LPCB\.EC0\.XIF0 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.IF01, ^^PCI0.LPCB.EC0.IF02) end;
+into method label _BIF code_regex =\s\^\^PCI0\.LPCB\.EC0\.XIF1 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.IF11, ^^PCI0.LPCB.EC0.IF12) end;
+into method label _BIF code_regex =\s\^\^PCI0\.LPCB\.EC0\.XIF2 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.IF21, ^^PCI0.LPCB.EC0.IF22) end;
+into method label _BIF code_regex =\s\^\^PCI0\.LPCB\.EC0\.XIF3 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.IF31, ^^PCI0.LPCB.EC0.IF32) end;
+into method label _BIF code_regex =\s\^\^PCI0\.LPCB\.EC0\.XIF4 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.IF41, ^^PCI0.LPCB.EC0.IF42) end;
+into method label _BIF code_regex =\s\^\^PCI0\.LPCB\.EC0\.XIF7 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.IF71, ^^PCI0.LPCB.EC0.IF72) end;
+
+into method label _BST code_regex =\s\^\^PCI0\.LPCB\.EC0\.XST0 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.ST01, ^^PCI0.LPCB.EC0.ST02) end;
+into method label _BST code_regex =\s\^\^PCI0\.LPCB\.EC0\.XST1 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.ST11, ^^PCI0.LPCB.EC0.ST12) end;
+into method label _BST code_regex =\s\^\^PCI0\.LPCB\.EC0\.XST2 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.ST21, ^^PCI0.LPCB.EC0.ST22) end;
+into method label _BST code_regex =\s\^\^PCI0\.LPCB\.EC0\.XST3 replaceall_matched begin = B1B2(^^PCI0.LPCB.EC0.ST31, ^^PCI0.LPCB.EC0.ST32) end;
+
+
+
+

@@ -1,0 +1,27 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Lenovo G40-70
+
+into device label EC0 code_regex B1RC,\s+16, replace_matched begin BRC1,8,BRC2,8, end;
+into device label EC0 code_regex B1FV,\s+16, replace_matched begin BFV1,8,BFV2,8, end;
+into device label EC0 code_regex B1DV,\s+16, replace_matched begin BDV1,8,BDV2,8, end;
+into device label EC0 code_regex B1DC,\s+16, replace_matched begin BDC1,8,BDC2,8, end;
+into device label EC0 code_regex B1FC,\s+16, replace_matched begin BFC1,8,BFC2,8, end;
+into device label EC0 code_regex B1AC,\s+16, replace_matched begin BAC1,8,BAC2,8, end;
+
+into method label _BST code_regex \(B1RC, replaceall_matched begin (B1B2(BRC1,BRC2), end;
+into method label _BST code_regex \(B1FV, replaceall_matched begin (B1B2(BFV1,BFV2), end;
+into method label _BIF code_regex \(B1DV, replaceall_matched begin (B1B2(BDV1,BDV2), end;
+into method label _BIF code_regex \(B1DC, replaceall_matched begin (B1B2(BDC1,BDC2), end;
+into method label _BIF code_regex \(B1FC, replaceall_matched begin (B1B2(BFC1,BFC2), end;
+into method label _BST code_regex \(B1AC, replaceall_matched begin (B1B2(BAC1,BAC2), end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;

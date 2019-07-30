@@ -1,0 +1,55 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Samsung NP500R4L-KS1BR
+
+#
+# 16 bits
+#
+into scope label _SB.PCI0.LPCB.H_EC code_regex CYLC,\s+16 replace_matched begin CL10,8,CL11,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex BTPC,\s+16, replace_matched begin CP10,8,CP11,8, end;
+
+into method label SBIX code_regex \^\^PCI0\.LPCB\.H_EC\.CYLC replaceall_matched begin B1B2(^^PCI0.LPCB.H_EC.CL10,^^PCI0.LPCB.H_EC.CL11) end;
+into method label _BTP code_regex \^\^PCI0\.LPCB\.H_EC\.BTPC replaceall_matched begin B1B2(^^PCI0.LPCB.H_EC.CP10,^^PCI0.LPCB.H_EC.CP11) end;
+
+#
+# 32 bits
+#
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1RR,\s+32 replace_matched begin RR00,8,RR01,8,RR02,8,RR03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1PV,\s+32 replace_matched begin PV00,8,PV01,8,PV02,8,PV03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1AF,\s+32 replace_matched begin AF00,8,AF01,8,AF02,8,AF03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1VL,\s+32 replace_matched begin VL00,8,VL01,8,VL02,8,VL03,8 end;
+
+into method label _BST code_regex \^\^PCI0\.LPCB\.H_EC\.B1RR replaceall_matched begin B1B4(^^PCI0.LPCB.H_EC.RR00,^^PCI0.LPCB.H_EC.RR01,^^PCI0.LPCB.H_EC.RR02,^^PCI0.LPCB.H_EC.RR03) end;
+
+into method label _BST code_regex \^\^PCI0\.LPCB\.H_EC\.B1PV replaceall_matched begin B1B4(^^PCI0.LPCB.H_EC.PV00,^^PCI0.LPCB.H_EC.PV01,^^PCI0.LPCB.H_EC.PV02,^^PCI0.LPCB.H_EC.PV03) end;
+
+into method label SBIX code_regex \^\^PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(^^PCI0.LPCB.H_EC.AF00,^^PCI0.LPCB.H_EC.AF01,^^PCI0.LPCB.H_EC.AF02,^^PCI0.LPCB.H_EC.AF03) end;
+
+into method label RPTS code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.H_EC.AF00,\\_SB.PCI0.LPCB.H_EC.AF01,\\_SB.PCI0.LPCB.H_EC.AF02,\\_SB.PCI0.LPCB.H_EC.AF03) end;
+
+into method label RWAK code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.H_EC.AF00,\\_SB.PCI0.LPCB.H_EC.AF01,\\_SB.PCI0.LPCB.H_EC.AF02,\\_SB.PCI0.LPCB.H_EC.AF03) end;
+
+into method label SBIX code_regex \^\^PCI0\.LPCB\.H_EC\.B1VL replaceall_matched begin B1B4(^^PCI0.LPCB.H_EC.VL00,^^PCI0.LPCB.H_EC.VL01,^^PCI0.LPCB.H_EC.VL02,^^PCI0.LPCB.H_EC.VL03) end;
+
+#
+# 
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+into method label B1B4 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B4, 4, NotSerialized)\n
+{\n
+    Store(Arg3, Local0)\n
+    Or(Arg2, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg1, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg0, ShiftLeft(Local0, 8), Local0)\n
+    Return(Local0)\n
+}\n
+end;

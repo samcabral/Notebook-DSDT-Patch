@@ -1,0 +1,4 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Isso não é um patch.

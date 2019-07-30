@@ -1,0 +1,61 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Itautec InfoWay Note W7730
+
+into device label EC code_regex BDC0,\s+32, replace_matched begin BD01,8,BD02,8,BD03,8,BD04,8, end;
+into device label EC code_regex BFC0,\s+32, replace_matched begin BF01,8,BF02,8,BF03,8,BF04,8, end;
+into device label EC code_regex BDV0,\s+32, replace_matched begin BV01,8,BV02,8,BV03,8,BV04,8, end;
+into device label EC code_regex BST0,\s+32, replace_matched begin BS01,8,BS02,8,BS03,8,BS04,8, end;
+into device label EC code_regex BPR0,\s+32, replace_matched begin BP01,8,BP02,8,BP03,8,BP04,8, end;
+into device label EC code_regex BRC0,\s+32, replace_matched begin BR01,8,BR02,8,BR03,8,BR04,8, end;
+into device label EC code_regex BPV0,\s+32, replace_matched begin BPV1,8,BPV2,8,BPV3,8,BPV4,8, end;
+into device label EC code_regex BCW0,\s+32, replace_matched begin BW01,8,BW02,8,BW03,8,BW04,8, end;
+into device label EC code_regex BCL0,\s+32, replace_matched begin BC01,8,BC02,8,BC03,8,BC04,8, end;
+
+into method label UPBI code_regex \(\^\^PCI0\.LPCB\.EC\.BDC0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BD01, ^^PCI0.LPCB.EC.BD02, ^^PCI0.LPCB.EC.BD03, ^^PCI0.LPCB.EC.BD04), end;
+into method label WMBB code_regex \(\^\^PCI0\.LPCB\.EC\.BDC0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BD01, ^^PCI0.LPCB.EC.BD02, ^^PCI0.LPCB.EC.BD03, ^^PCI0.LPCB.EC.BD04), end;
+into method label UPBI code_regex \(\^\^PCI0\.LPCB\.EC\.BFC0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BF01, ^^PCI0.LPCB.EC.BF02, ^^PCI0.LPCB.EC.BF03, ^^PCI0.LPCB.EC.BF04), end;
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC\.BFC0\) replaceall_matched begin B1B4(^^PCI0.LPCB.EC.BF01, ^^PCI0.LPCB.EC.BF02, ^^PCI0.LPCB.EC.BF03, ^^PCI0.LPCB.EC.BF04)) end;
+into method label WMBB code_regex \(\^\^PCI0\.LPCB\.EC\.BFC0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BF01, ^^PCI0.LPCB.EC.BF02, ^^PCI0.LPCB.EC.BF03, ^^PCI0.LPCB.EC.BF04), end;
+into method label UPBI code_regex \(\^\^PCI0\.LPCB\.EC\.BDV0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BV01, ^^PCI0.LPCB.EC.BV02, ^^PCI0.LPCB.EC.BV03, ^^PCI0.LPCB.EC.BV04), end;
+into method label UPBS code_regex \(\^\^PCI0\.LPCB\.EC\.BST0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BS01, ^^PCI0.LPCB.EC.BS02, ^^PCI0.LPCB.EC.BS03, ^^PCI0.LPCB.EC.BS04), end;
+into method label UPBS code_regex \(\^\^PCI0\.LPCB\.EC\.BPR0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BP01, ^^PCI0.LPCB.EC.BP02, ^^PCI0.LPCB.EC.BP03, ^^PCI0.LPCB.EC.BP04), end;
+into method label UPBS code_regex \(\^\^PCI0\.LPCB\.EC\.BRC0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BR01, ^^PCI0.LPCB.EC.BR02, ^^PCI0.LPCB.EC.BR03, ^^PCI0.LPCB.EC.BR04), end;
+into method label UPBS code_regex \(\^\^PCI0\.LPCB\.EC\.BPV0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BPV1, ^^PCI0.LPCB.EC.BPV2, ^^PCI0.LPCB.EC.BPV3, ^^PCI0.LPCB.EC.BPV4), end;
+into method label UPBI code_regex \(\^\^PCI0\.LPCB\.EC\.BCW0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BW01, ^^PCI0.LPCB.EC.BW02, ^^PCI0.LPCB.EC.BW03, ^^PCI0.LPCB.EC.BW04), end;
+into method label UPBI code_regex \(\^\^PCI0\.LPCB\.EC\.BCL0, replaceall_matched begin (B1B4(^^PCI0.LPCB.EC.BC01, ^^PCI0.LPCB.EC.BC02, ^^PCI0.LPCB.EC.BC03, ^^PCI0.LPCB.EC.BC04), end;
+
+# Utility Method by Rehabman
+
+into method label B1B4 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B4, 4, NotSerialized)\n
+{\n
+    Store(Arg3, Local0)\n
+    Or(Arg2, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg1, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg0, ShiftLeft(Local0, 8), Local0)\n
+    Return(Local0)\n
+}\n
+end;
+
+# Patch Mutex by Rehabman
+
+# 2x as there is some sort of MaciASL bug...
+# (code_regex_not seems broken)
+#into_all all code_regex_not Mutex\s+\([^,]*,\s+0x00\) code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+#into_all all code_regex_not Mutex\s+\([^,]*,\s+0x00\) code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+
+# 10x as workaround for MaciASL bug...
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;

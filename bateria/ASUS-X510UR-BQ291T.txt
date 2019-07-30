@@ -1,0 +1,18 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# ASUS X510UR-291T
+
+into device label EC0 code_regex B0C3,\s+16, replace_matched begin B030,8,B031,8, end;
+into device label EC0 code_regex B0SN,\s+16, replace_matched begin B0N0,8,B0N1,8, end;
+into device label EC0 code_regex B1SN,\s+16 replace_matched begin B1N0,8,B1N1,8, end;
+
+into method label _BIX code_regex B0C3 replaceall_matched begin B1B2(B030,B031) end;
+into method label BIFA code_regex B0SN replaceall_matched begin B1B2(B0N0,B0N1) end;
+into method label BIFA code_regex B1SN replaceall_matched begin B1B2(B1N0,B1N1) end;
+
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;

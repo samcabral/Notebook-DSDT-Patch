@@ -1,0 +1,39 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Samsung NP270E5G-XD1BR
+
+into device label H_EC code_regex BTPC,\s+16, replace_matched begin CP10,8,CP11,8, end;
+into device label H_EC code_regex B1RA,\s+16, replace_matched begin AR10,8,AR11,8, end;
+into device label H_EC code_regex B1PR,\s+16, replace_matched begin RP10,8,RP11,8, end;
+into device label H_EC code_regex B1VO,\s+16, replace_matched begin VO10,8,VO11,8, end;
+into device label H_EC code_regex B1DA,\s+16, replace_matched begin AD10,8,AD11,8, end;
+into device label H_EC code_regex B1DF,\s+16, replace_matched begin FD10,8,FD11,8, end;
+into device label H_EC code_regex B1DV,\s+16, replace_matched begin VD10,8,VD11,8, end;
+into device label H_EC code_regex B1DL,\s+16, replace_matched begin LD10,8,LD11,8, end;
+into device label H_EC code_regex CYLC,\s+16, replace_matched begin CL10,8,CL11,8, end;
+
+into method label _BTP code_regex BTPC replaceall_matched begin B1B2(CP10,CP11) end;
+into method label _BST code_regex B1RA replaceall_matched begin B1B2(AR10,AR11) end;
+into method label _BST code_regex B1PR replaceall_matched begin B1B2(RP10,RP11) end;
+into method label _BST code_regex B1VO replaceall_matched begin B1B2(VO10,VO11) end;
+into method label _BIF code_regex B1DA replaceall_matched begin B1B2(AD10,AD11) end;
+into method label _BIX code_regex B1DA replaceall_matched begin B1B2(AD10,AD11) end;
+into method label _BIF code_regex B1DF replaceall_matched begin B1B2(FD10,FD11) end;
+into method label _BIX code_regex B1DF replaceall_matched begin B1B2(FD10,FD11) end;
+into method label _PTS code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1DF replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.H_EC.FD10,\\_SB.PCI0.LPCB.H_EC.FD11) end;
+into method label _WAK code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1DF replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.H_EC.FD10,\\_SB.PCI0.LPCB.H_EC.FD11) end;
+into method label _BIF code_regex B1DV replaceall_matched begin B1B2(VD10,VD11) end;
+into method label _BIX code_regex B1DV replaceall_matched begin B1B2(VD10,VD11) end;
+into method label _BIF code_regex B1DL replaceall_matched begin B1B2(LD10,LD11) end;
+into method label _BIX code_regex B1DL replaceall_matched begin B1B2(LD10,LD11) end;
+into method label _BIX code_regex CYLC replaceall_matched begin B1B2(CL10,CL11) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;

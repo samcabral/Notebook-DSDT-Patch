@@ -1,0 +1,29 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# GPD Pocket 2 (MiniLaptop)
+# https://gpd.hk/gpdpocket2
+
+into device label H_EC code_regex B1DC,\s+16, replace_matched begin CD11,8,CD12,8, end;
+into device label H_EC code_regex B1FV,\s+16, replace_matched begin VF11,8,VF12,8, end;
+into device label H_EC code_regex B1FC,\s+16, replace_matched begin CF11,8,CF12,8, end;
+into device label H_EC code_regex B1CR,\s+16, replace_matched begin RC11,8,RC12,8, end;
+into device label H_EC code_regex B1VT,\s+16, replace_matched begin TV11,8,TV12,8, end;
+
+
+into method label _BIF code_regex B1DC replaceall_matched begin B1B2(CD11, CD12) end;
+into method label _BIF code_regex B1FV replaceall_matched begin B1B2(VF11, VF12) end;
+into method label _BST code_regex B1FV replaceall_matched begin B1B2(VF11, VF12) end;
+into method label _BIF code_regex B1FC replaceall_matched begin B1B2(CF11, CF12) end;
+into method label _BST code_regex B1FC replaceall_matched begin B1B2(CF11, CF12) end;
+into method label _BST code_regex B1CR replaceall_matched begin B1B2(RC11, RC12) end;
+into method label _BST code_regex B1VT replaceall_matched begin B1B2(TV11, TV12) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
