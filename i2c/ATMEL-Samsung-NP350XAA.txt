@@ -1,0 +1,107 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Touchpad I2C maxTouch (Atmel)
+# Samsung Essentials E30 NP350XAA
+
+into device label SPTP code_regex Name\s\(SBFG replaceall_matched
+begin
+Name\s\(DDDD
+end;
+
+into device label SPTP insert
+begin
+Name (SBFG, ResourceTemplate ()\n
+{\n
+    GpioInt (Level, ActiveLow, Exclusive, PullDefault, 0x0000,\n
+        "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,\n
+        )\n
+        {   // Pin list\n
+            0x1b\n
+        }\n
+})\n
+end;
+
+into method label _INI parent_label SPTP remove_entry;
+into device label SPTP insert
+begin
+Method (_INI, 0, NotSerialized)\n
+{\n
+    Store (0x02010003, Local0)\n
+    If (LLess (OSYS, 0x07DC))\n
+    {\n
+        SRXO (Local0, One)\n
+    }\n
+    Store (GNUM (Local0), INT1)\n
+    Store (INUM (Local0), INT2)\n
+    If (LEqual (SDM0, Zero))\n
+    {\n
+        SHPO (Local0, One)\n
+    }\n
+    Store (0x4A, Local0)\n
+    Store (Local0, ADR2)\n
+}\n
+end;
+
+into method label _HID parent_label SPTP remove_entry;
+into device label SPTP insert
+begin
+Name (_HID, "ATML3000")\n
+end;
+
+into method label _DSM parent_label SPTP remove_entry;
+into device label SPTP insert
+begin
+Method (_DSM, 4, NotSerialized)\n
+{\n
+    If (LEqual (Arg0, ToUUID ("3cdff6f7-4267-4555-ad05-b30a3d8938de")\n
+    {\n
+        If (LEqual (Arg2, Zero))\n
+        {\n
+            If (LEqual (Arg1, One)) { Return (Buffer (One) { 0x03 }) }\n
+            Else { Return (Buffer (One) { 0x00 }) }\n
+        }\n
+        If (LEqual (Arg2, One)) { Return (Zero) }\n
+    }\n
+    ElseIf (LEqual (Arg0, ToUUID ("ef87eb82-f951-46da-84ec-14871ac6f84b")))\n
+    {\n
+        If (LEqual (Arg2, Zero))\n
+        {\n
+            If (LEqual (Arg1, One)) { Return (Buffer (One) { 0x03 }) }\n
+        }\n
+        If (LEqual (Arg2, One))\n
+        {\n
+            Return (ConcatenateResTemplate (SBFS, SBFG))\n
+        }\n
+        Return (Buffer (One) { 0x00 })\n
+    }\n
+    Else { Return (Buffer (One) { 0x00 }) }\n
+}\n
+end;
+
+into method label _STA parent_label SPTP remove_entry;
+into device label SPTP insert
+begin
+Name (_STA, 0x0F)\n
+end;
+
+into method label _CRS parent_label SPTP remove_entry;
+into device label SPTP insert
+begin
+Method (_CRS, 0, NotSerialized)\n
+{\n
+    Return (ConcatenateResTemplate (SBFS, SBFG))\n
+}\n
+end;
+
+into method label _STA parent_label ATFU remove_entry;
+into device label SPTP insert
+begin
+Name (_STA, 0x00)\n
+end;
+
+into method label _STA parent_label PS2M remove_entry;
+into device label PS2M insert
+begin
+Name (_STA, 0x00)\n
+end;

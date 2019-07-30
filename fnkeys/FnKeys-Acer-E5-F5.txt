@@ -1,0 +1,18 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# FnKeys Brightness para SmartTouchPad (Synaptics)) by EMlyDinEsH
+# Acer Aspire F5-573G-50KS
+# Acer Aspire E5-574-307M
+
+into method label _Q8F replace_content
+begin
+// Abaixar brilho\n
+Notify (_SB.PCI0.LPCB.PS2K, 0x20)\n
+end;
+
+into method label _Q8E replace_content
+begin
+// Aumentar brilho\n
+Notify (_SB.PCI0.LPCB.PS2K, 0x10)\n
+end;

@@ -1,0 +1,11 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Touchpad I2C ELAN 1200
+# ASUS X510UR
+
+#
+# OS Check Fix (Windows 8) by Rehabman.
+#
+into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2012\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2012"))) end;
+

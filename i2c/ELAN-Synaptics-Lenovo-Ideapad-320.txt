@@ -1,0 +1,38 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Touchpad I2C ELAN / SYNAPTICS
+# Lenovo Ideapad 320-15IKB
+
+into method label _STA parent_label GPI0 replace_content
+begin
+Return (0x0F)
+end;
+
+into method label _STA parent_label TPD0 replace_content
+begin
+Return (0x0F)
+end;
+
+into device label TPD0 insert
+begin
+Name (SBGG, ResourceTemplate ()\n
+    {\n
+        GpioInt (Level, ActiveLow, ExclusiveAndWake, PullDefault, 0x0000,\n
+            "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,\n
+            )\n
+            {   // Pin list\n
+                0x3f\n
+            }\n
+    })\n
+end;
+
+into method label _CRS parent_label TPD0 replace_content begin
+Return (ConcatenateResTemplate (SBFB, SBGG))
+end;
+
+#
+# OS Check Fix (Windows 8) by Rehabman.
+#
+into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2012\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2012"))) end;
+

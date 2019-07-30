@@ -18,3 +18,12 @@
 [BAT] Samsung NP350XAA-KFWBR	bateria/Samsung-NP350XAA-VD1BR.txt
 [BAT] Samsung NP500R4L-KS1BR	bateria/Samsung-NP500R4L-KS1BR.txt
 [BAT] Samsung NP800G5M-XG1BR	bateria/Samsung-NP800G5M-XG1BR.txt
+[FNK] --> FnKeys Patches	NullPatch.txt
+[FNK] Fn Keys Acer E5 F5	fnkeys/FnKeys-Acer-E5-F5.txt
+[FNK] Fn Keys ASUS X510UR	fnkeys/FnKeys-ASUS-X510UR.txt
+[FNK] Fn Keys Lenovo Ideapad 320	fnkeys/FnKeys-Lenovo-Ideapad-320.txt
+[I2C] --> Touchpad I2C Patches	NullPatch.txt
+[I2C] ATMEL Samsung NP350XAA	i2c/ATMEL-Samsung-NP350XAA.txt
+[I2C] ELAN Synaptics Lenovo Ideapad 320	i2c/ELAN-Synaptics-Lenovo-Ideapad-320.txt
+[I2C] ELAN1200 ASUS X510UR	i2c/ELAN1200-ASUS-X510UR.txt
+[I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
