@@ -1,8 +1,8 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
-# Touchpad I2C SYNAPTICS
-# Lenovo Ideapad 330S
+# Touchpad I2C DELL
+# Dell Inspiron 3481
 
 #
 # OS Check Fix (Windows 8) by Rehabman.
