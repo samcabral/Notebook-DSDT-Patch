@@ -24,6 +24,7 @@
 [FNK] Fn Keys Lenovo Ideapad 320	fnkeys/FnKeys-Lenovo-Ideapad-320.txt
 [I2C] --> Touchpad I2C Patches	NullPatch.txt
 [I2C] ATMEL Samsung NP350XAA	i2c/ATMEL-Samsung-NP350XAA.txt
+[I2C] DELL05CE Dell Inspiron 3481	i2c/DELL05CE-Dell-Inspiron-3481.txt
 [I2C] ELAN Synaptics Lenovo Ideapad 320	i2c/ELAN-Synaptics-Lenovo-Ideapad-320.txt
 [I2C] ELAN1200 ASUS X510UR	i2c/ELAN1200-ASUS-X510UR.txt
 [I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
