@@ -1,0 +1,63 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Positivo Premiun-XS7320
+
+#
+# 32 bits
+#
+into device label EC code_regex BDC0,\s+32 replace_matched begin CDB0,8,CDB1,8,CDB2,8,CDB3,8 end;
+into device label EC code_regex BFC0,\s+32 replace_matched begin CFB0,8,CFB1,8,CFB2,8,CFB3,8 end;
+into device label EC code_regex BDV0,\s+32 replace_matched begin VDB0,8,VDB1,8,VDB2,8,VDB3,8 end;
+into device label EC code_regex BST0,\s+32 replace_matched begin TSB0,8,TSB1,8,TSB2,8,TSB3,8 end;
+into device label EC code_regex BPR0,\s+32 replace_matched begin RPB0,8,RPB1,8,RPB2,8,RPB3,8 end;
+into device label EC code_regex BRC0,\s+32 replace_matched begin CRB0,8,CRB1,8,CRB2,8,CRB3,8 end;
+into device label EC code_regex BPV0,\s+32 replace_matched begin VPB0,8,VPB1,8,VPB2,8,VPB3,8 end;
+into device label EC code_regex BCW0,\s+32 replace_matched begin WCB0,8,WCB1,8,WCB2,8,WCB3,8 end;
+into device label EC code_regex BCL0,\s+32 replace_matched begin LCB0,8,LCB1,8,LCB2,8,LCB3,8 end;
+
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC\.BDC0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.CDB0,^^PCI0.LPCB.EC.CDB1,^^PCI0.LPCB.EC.CDB2,^^PCI0.LPCB.EC.CDB3) end;
+
+into method label WMBB code_regex \^\^PCI0\.LPCB\.EC\.BDC0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.CDB0,^^PCI0.LPCB.EC.CDB1,^^PCI0.LPCB.EC.CDB2,^^PCI0.LPCB.EC.CDB3) end;
+
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC\.BFC0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.CFB0,^^PCI0.LPCB.EC.CFB1,^^PCI0.LPCB.EC.CFB2,^^PCI0.LPCB.EC.CFB3) end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC\.BFC0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.CFB0,^^PCI0.LPCB.EC.CFB1,^^PCI0.LPCB.EC.CFB2,^^PCI0.LPCB.EC.CFB3) end;
+
+into method label WMBB code_regex \^\^PCI0\.LPCB\.EC\.BFC0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.CFB0,^^PCI0.LPCB.EC.CFB1,^^PCI0.LPCB.EC.CFB2,^^PCI0.LPCB.EC.CFB3) end;
+
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC\.BDV0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.VDB0,^^PCI0.LPCB.EC.VDB1,^^PCI0.LPCB.EC.VDB2,^^PCI0.LPCB.EC.VDB3) end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC\.BST0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.TSB0,^^PCI0.LPCB.EC.TSB1,^^PCI0.LPCB.EC.TSB2,^^PCI0.LPCB.EC.TSB3) end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC\.BPR0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.RPB0,^^PCI0.LPCB.EC.RPB1,^^PCI0.LPCB.EC.RPB2,^^PCI0.LPCB.EC.RPB3) end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC\.BRC0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.CRB0,^^PCI0.LPCB.EC.CRB1,^^PCI0.LPCB.EC.CRB2,^^PCI0.LPCB.EC.CRB3) end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC\.BPV0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.VPB0,^^PCI0.LPCB.EC.VPB1,^^PCI0.LPCB.EC.VPB2,^^PCI0.LPCB.EC.VPB3) end;
+
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC\.BCW0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.WCB0,^^PCI0.LPCB.EC.WCB1,^^PCI0.LPCB.EC.WCB2,^^PCI0.LPCB.EC.WCB3) end;
+
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC\.BCL0 replaceall_matched begin B1B4(^^PCI0.LPCB.EC.LCB0,^^PCI0.LPCB.EC.LCB1,^^PCI0.LPCB.EC.LCB2,^^PCI0.LPCB.EC.LCB3) end;
+
+#
+# 
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+into method label B1B4 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B4, 4, NotSerialized)\n
+{\n
+    Store(Arg3, Local0)\n
+    Or(Arg2, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg1, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg0, ShiftLeft(Local0, 8), Local0)\n
+    Return(Local0)\n
+}\n
+end;

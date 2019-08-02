@@ -1,0 +1,30 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# LG A530
+
+into device label EC0 code_regex DSCP,\s+16, replace_matched begin CPS1,8,CPS2,8, end;
+into device label EC0 code_regex LACP,\s+16, replace_matched begin CPA1,8,CPA2,8, end;
+into device label EC0 code_regex DSVG,\s+16, replace_matched begin GVS1,8,GVS2,8, end;
+into device label EC0 code_regex MCUR,\s+16, replace_matched begin RUC1,8,RUC2,8, end;
+into device label EC0 code_regex MBRM,\s+16, replace_matched begin MRB1,8,MRB2,8, end;
+into device label EC0 code_regex MBCV,\s+16, replace_matched begin VCB1,8,VCB2,8, end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC0\.DSCP replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CPS1, ^^PCI0.LPCB.EC0.CPS2) end;
+
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC0\.DSCP replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CPS1, ^^PCI0.LPCB.EC0.CPS2) end;
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC0\.LACP replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CPA1, ^^PCI0.LPCB.EC0.CPA2) end;
+into method label UPBI code_regex \^\^PCI0\.LPCB\.EC0\.DSVG replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.GVS1, ^^PCI0.LPCB.EC0.GVS2) end;
+
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC0\.MCUR replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.RUC1, ^^PCI0.LPCB.EC0.RUC2) end;
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC0\.MBRM replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.MRB1, ^^PCI0.LPCB.EC0.MRB2) end;
+into method label UPBS code_regex \^\^PCI0\.LPCB\.EC0\.MBCV replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VCB1, ^^PCI0.LPCB.EC0.VCB2) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into scope label _SB insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;

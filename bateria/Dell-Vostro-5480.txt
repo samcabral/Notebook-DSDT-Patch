@@ -1,0 +1,29 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Dell Vostro 5480
+
+into device label EC code_regex CAP0,\s+16, replace_matched begin CPS1,8,CPS2,8, end;
+into device label EC code_regex VOT0,\s+16, replace_matched begin CPA1,8,CPA2,8, end;
+into device label EC code_regex CRT0,\s+16, replace_matched begin GVS1,8,GVS2,8, end;
+into device label EC code_regex FCP0,\s+16, replace_matched begin RUC1,8,RUC2,8, end;
+into device label EC code_regex DCP0,\s+16, replace_matched begin MRB1,8,MRB2,8, end;
+into device label EC code_regex DVT0,\s+16, replace_matched begin VCB1,8,VCB2,8, end;
+into device label EC code_regex BSN0,\s+16, replace_matched begin NSB1,8,NSB2,8, end;
+
+into method label _BST code_regex \^\^EC\.CAP0 replaceall_matched begin B1B2(^^EC.CPS1, ^^EC.CPS2) end;
+into method label _BST code_regex \^\^EC\.VOT0 replaceall_matched begin B1B2(^^EC.CPA1, ^^EC.CPA2) end;
+into method label _BST code_regex \^\^EC\.CRT0 replaceall_matched begin B1B2(^^EC.GVS1, ^^EC.GVS2) end;
+into method label _BIF code_regex \^\^EC\.FCP0 replaceall_matched begin B1B2(^^EC.RUC1, ^^EC.RUC2) end;
+into method label _BIF code_regex \^\^EC\.DCP0 replaceall_matched begin B1B2(^^EC.MRB1, ^^EC.MRB2) end;
+into method label _BIF code_regex \^\^EC\.DVT0 replaceall_matched begin B1B2(^^EC.VCB1, ^^EC.VCB2) end;
+into method label _BIF code_regex \^\^EC\.BSN0 replaceall_matched begin B1B2(^^EC.NSB1, ^^EC.NSB2) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
