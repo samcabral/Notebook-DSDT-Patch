@@ -1,0 +1,34 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Touchpad I2C ELAN / SYNAPTICS
+# Lenovo Ideapad 330
+
+#
+# OS Check Fix (Windows 8) by Rehabman.
+#
+into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2012\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2012"))) end;
+
+into method label _CRS parent_label TPD0 replace_content
+begin
+Name (SBFX, ResourceTemplate ()\n
+{\n
+    GpioInt (Level, ActiveLow, ExclusiveAndWake, PullDefault, 0x0000,\n
+        "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,\n
+        )\n
+        {\n
+            0x57\n
+        }\n
+})\n
+Return (ConcatenateResTemplate (SBFB, SBFX))
+end;
+
+into method label _STA parent_label TPD0 replace_content
+begin
+Return (0x0F)
+end;
+
+into method label _STA parent_label GPI0 replace_content
+begin
+Return (0x0F)
+end;

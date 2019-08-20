@@ -1,0 +1,32 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# ASUS TP412U
+
+into device label H_EC code_regex B1DC,\s+16, replace_matched begin X1D1,8,X1D2,8, end;
+into method label _BIF code_regex B1DC replaceall_matched begin B1B2(X1D1, X1D2) end;
+
+into device label H_EC code_regex B1FV,\s+16, replace_matched begin XVF1,8,XVF2,8, end;
+into method label _BIF code_regex B1FV replaceall_matched begin B1B2(XVF1, XVF2) end;
+into method label _BST code_regex B1FV replaceall_matched begin B1B2(XVF1, XVF2) end;
+
+into device label H_EC code_regex B1FC,\s+16, replace_matched begin XBF1,8,XBF2,8, end;
+into method label _BIF code_regex B1FC replaceall_matched begin B1B2(XBF1, XBF2) end;
+
+into device label H_EC code_regex B1CR,\s+16, replace_matched begin XCR1,8,XCR2,8, end;
+into method label _BST code_regex B1CR replaceall_matched begin B1B2(XCR1, XCR2) end;
+
+into device label H_EC code_regex B1RC,\s+16, replace_matched begin XRC1,8,XRC2,8, end;
+into method label _BST code_regex B1RC replaceall_matched begin B1B2(XRC1, XRC2) end;
+
+into device label H_EC code_regex B1LC,\s+16, replace_matched begin XLC1,8,XLC2,8, end;
+into method label _BIX code_regex B1LC replaceall_matched begin B1B2(XLC1, XLC2) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;

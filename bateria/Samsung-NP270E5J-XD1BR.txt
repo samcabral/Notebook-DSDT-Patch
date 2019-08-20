@@ -3,6 +3,7 @@
 #
 # Samsung NP270E5J-XD1BR
 # Samsung NP270E5J-XD3BR
+# Samsung NP300E5M-XD1BR
 
 #
 # 16 bits
@@ -30,6 +31,10 @@ into method label SBIX code_regex \^\^PCI0\.LPCB\.H_EC\.B1AF replaceall_matched 
 into method label _PTS code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.H_EC.AF00,\\_SB.PCI0.LPCB.H_EC.AF01,\\_SB.PCI0.LPCB.H_EC.AF02,\\_SB.PCI0.LPCB.H_EC.AF03) end;
 
 into method label _WAK code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.H_EC.AF00,\\_SB.PCI0.LPCB.H_EC.AF01,\\_SB.PCI0.LPCB.H_EC.AF02,\\_SB.PCI0.LPCB.H_EC.AF03) end;
+
+into method label RPTS code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.H_EC.AF00,\\_SB.PCI0.LPCB.H_EC.AF01,\\_SB.PCI0.LPCB.H_EC.AF02,\\_SB.PCI0.LPCB.H_EC.AF03) end;
+
+into method label RWAK code_regex \\_SB\.PCI0\.LPCB\.H_EC\.B1AF replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.H_EC.AF00,\\_SB.PCI0.LPCB.H_EC.AF01,\\_SB.PCI0.LPCB.H_EC.AF02,\\_SB.PCI0.LPCB.H_EC.AF03) end;
 
 into method label SBIX code_regex \^\^PCI0\.LPCB\.H_EC\.B1VL replaceall_matched begin B1B4(^^PCI0.LPCB.H_EC.VL00,^^PCI0.LPCB.H_EC.VL01,^^PCI0.LPCB.H_EC.VL02,^^PCI0.LPCB.H_EC.VL03) end;
 

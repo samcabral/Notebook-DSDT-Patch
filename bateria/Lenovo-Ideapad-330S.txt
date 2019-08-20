@@ -1,6 +1,7 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Lenovo Ideapad 330
 # Lenovo Ideapad 330S
 
 into device label H_EC code_regex BML0,\s+16, replace_matched begin LMB0,8,LMB1,8, end;

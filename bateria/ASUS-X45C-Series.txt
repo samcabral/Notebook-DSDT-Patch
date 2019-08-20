@@ -1,0 +1,151 @@
+ 
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Baseado no Lenovo-y580 by RehabMan.
+#
+# ASUS X45C Series
+
+into device label EC0 code_regex TAH0,\s+16, replace_matched begin XHA1,8,XHA2,8, end;
+into device label EC0 code_regex TAH1,\s+16, replace_matched begin XH11,8,XH12,8, end;
+into device label EC0 code_regex B0C3,\s+16, replace_matched begin XC31,8,XC32,8, end;
+into device label EC0 code_regex B0SN,\s+16, replace_matched begin XNS1,8,XNS2,8, end;
+into device label EC0 code_regex B0VL,\s+16, replace_matched begin XVL1,8,XVL2,8, end;
+into device label EC0 code_regex B0RC,\s+16, replace_matched begin XCR1,8,XCR2,8, end;
+into device label EC0 code_regex B0FC,\s+16, replace_matched begin XCF1,8,XCF2,8, end;
+into device label EC0 code_regex B0MD,\s+16, replace_matched begin XMD1,8,XMD2,8, end;
+into device label EC0 code_regex B0ST,\s+16, replace_matched begin XST1,8,XST2,8, end;
+into device label EC0 code_regex B0CC,\s+16, replace_matched begin XCC1,8,XCC2,8, end;
+into device label EC0 code_regex B0DC,\s+16, replace_matched begin XBD1,8,XBD2,8, end;
+into device label EC0 code_regex B0DV,\s+16, replace_matched begin XVB1,8,XVB2,8, end;
+into device label EC0 code_regex B1VL,\s+16, replace_matched begin XBV1,8,XBV2,8, end;
+into device label EC0 code_regex B1RC,\s+16, replace_matched begin XRC1,8,XRC2,8, end;
+into device label EC0 code_regex B1FC,\s+16, replace_matched begin XBC1,8,XBC2,8, end;
+into device label EC0 code_regex B1MD,\s+16, replace_matched begin XMB1,8,XMB2,8, end;
+into device label EC0 code_regex B1ST,\s+16, replace_matched begin XSB1,8,XSB2,8, end;
+into device label EC0 code_regex B1CC,\s+16, replace_matched begin XB11,8,XB12,8, end;
+into device label EC0 code_regex B1DC,\s+16, replace_matched begin X1D1,8,X1D2,8, end;
+into device label EC0 code_regex B1DV,\s+16 replace_matched begin XV11,8,XV12,8 end;
+into device label EC0 code_regex B1SN,\s+16 replace_matched begin XSN1,8,XSN2,8 end;
+
+#
+#
+#
+into method label TACH code_regex TAH0 replaceall_matched begin B1B2(XHA1, XHA2) end;
+into method label TACH code_regex TAH1 replaceall_matched begin B1B2(XH11, XH12) end;
+into method label _BIX code_regex \^\^LPCB\.EC0\.B0C3 replaceall_matched begin B1B2(^^LPCB.EC0.XC31, ^^LPCB.EC0.XC32) end;
+into method label BIFA code_regex B0SN replaceall_matched begin B1B2(XNS1, XNS2) end;
+into method label BVOT code_regex B0VL replaceall_matched begin B1B2(XVL1, XVL2) end;
+
+into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B0RC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XCR1, ^^PCI0.LPCB.EC0.XCR2) end;
+into method label BRCP code_regex B0RC replaceall_matched begin B1B2(XCR1, XCR2) end;
+
+into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B0FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XCF1, ^^PCI0.LPCB.EC0.XCF2) end;
+into method label BIF2 code_regex B0FC replaceall_matched begin B1B2(XCF1, XCF2) end;
+
+into method label BIF0 code_regex B0MD replaceall_matched begin B1B2(XMD1, XMD2) end;
+into method label BIF3 code_regex B0MD replaceall_matched begin B1B2(XMD1, XMD2) end;
+into method label BSTS code_regex B0ST replaceall_matched begin B1B2(XST1, XST2) end;
+into method label BCRT code_regex B0CC replaceall_matched begin B1B2(XCC1, XCC2) end;
+into method label BIF1 code_regex B0DC replaceall_matched begin B1B2(XBD1, XBD2) end;
+
+into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B0DV replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XVB1, ^^PCI0.LPCB.EC0.XVB2) end;
+into method label FBST code_regex \^\^LPCB\.EC0\.B0DV replaceall_matched begin B1B2(^^LPCB.EC0.XVB1, ^^LPCB.EC0.XVB2) end;
+into method label CBST code_regex \^\^LPCB\.EC0\.B0DV replaceall_matched begin B1B2(^^LPCB.EC0.XVB1, ^^LPCB.EC0.XVB2) end;
+into method label BIF4 code_regex B0DV replaceall_matched begin B1B2(XVB1, XVB2) end;
+
+into method label BVOT code_regex B1VL replaceall_matched begin B1B2(XBV1, XBV2) end;
+
+into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B1RC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XRC1, ^^PCI0.LPCB.EC0.XRC2) end;
+into method label BRCP code_regex B1RC replaceall_matched begin B1B2(XRC1, XRC2) end;
+
+into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B1FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XBC1, ^^PCI0.LPCB.EC0.XBC2) end;
+into method label BIF2 code_regex B1FC replaceall_matched begin B1B2(XBC1, XBC2) end;
+
+into method label BIF0 code_regex B1MD replaceall_matched begin B1B2(XBC1, XBC2) end;
+into method label BIF3 code_regex B1MD replaceall_matched begin B1B2(XMB1, XMB2) end;
+
+into method label BSTS code_regex B1ST replaceall_matched begin B1B2(XSB1, XSB2) end;
+into method label BCRT code_regex B1CC replaceall_matched begin B1B2(XB11, XB12) end;
+
+into method label BIF1 code_regex B1DC replaceall_matched begin B1B2(X1D1, X1D2) end;
+
+into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B1DV replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XV11, ^^PCI0.LPCB.EC0.XV12) end;
+into method label BIF4 code_regex B1DV replaceall_matched begin B1B2(XV11, XV12) end;
+
+into method label BIFA code_regex B1SN replaceall_matched begin B1B2(XSN1, XSN2) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+#
+# 
+#
+into device label EC0 code_regex BDAT,\s+256, replace_matched begin BDAX,   256, end;
+into device label EC0 code_regex BDA2,\s+256, replace_matched begin BDAY,   256, end;
+
+into method label SMBR code_regex Store\s+\((.*),\s+BDAT\) replaceall_matched begin WECB(0x1c,256,%1) end;
+into method label SMBW code_regex Store\s+\((.*),\s+BDAT\) replaceall_matched begin WECB(0x1c,256,%1) end;
+into method label ECSB code_regex Store\s+\((.*),\s+BDAT\) replaceall_matched begin WECB(0x1c,256,%1) end;
+into method label ECSB code_regex Store\s+\((.*),\s+BDA2\) replaceall_matched begin WECB(0x44,256,%1) end;
+into method label ECSB code_regex \(BDAT, replaceall_matched begin (RECB(0x1c,256), end;
+into method label ECSB code_regex \(BDA2, replaceall_matched begin (RECB(0x44,256), end;
+into method label SMBR code_regex \(BDAT, replaceall_matched begin (RECB(0x1c,256), end;
+
+into method label RE1B parent_label EC0 remove_entry;
+into method label RECB parent_label EC0 remove_entry;
+into device label EC0 insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+Method (RECB, 2, Serialized)\n
+{\n
+    ShiftRight(Arg1, 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
+into method label WE1B parent_label EC0 remove_entry;
+into method label WECB parent_label EC0 remove_entry;
+into device label EC0 insert
+begin
+Method (WE1B, 2, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Store(Arg1, BYTE)\n
+}\n
+Method (WECB, 3, Serialized)\n
+{\n
+    ShiftRight(Arg1, 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Store(Arg2, TEMP)\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        WE1B(Arg0, DerefOf(Index(TEMP, Local0)))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+}\n
+end;
