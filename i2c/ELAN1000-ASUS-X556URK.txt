@@ -1,0 +1,41 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Touchpad I2C ELAN1000
+# ASUS VivoBook X556URK
+
+#
+# OS Check Fix (Windows 8) by Rehabman.
+#
+into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2012\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2012"))) end;
+
+into method label _CRS parent_label TPD0 replace_content
+begin
+Name (SBFB, ResourceTemplate ()\n
+{\n
+    I2cSerialBusV2 (0x0020, ControllerInitiated, 0x00061A80,\n
+        AddressingMode7Bit, "\\_SB.PCI0.I2C0",\n
+        0x00, ResourceConsumer, _Y24, Exclusive,\n
+        )\n
+})\n
+Name (SBFG, ResourceTemplate ()\n
+{\n
+    GpioInt (Level, ActiveLow, ExclusiveAndWake, PullDefault, 0x0000,\n
+        "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,\n
+        )\n
+        {   // Pin list\n
+            0x6D\n
+        }\n
+})\n
+Return (ConcatenateResTemplate (SBFB, SBFG))
+end;
+
+into method label _STA parent_label ETPD replace_content
+begin
+Return (0x0F)
+end;
+
+into method label _STA parent_label GPI0 replace_content
+begin
+Return (0x0F)
+end;

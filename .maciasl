@@ -3,13 +3,17 @@
 [BAT] Acer E5 573	bateria/Acer-E5-573.txt
 [BAT] Acer E5 574-307M	bateria/Acer-574-307M.txt
 [BAT] Acer E5 575	bateria/Acer-E5-575.txt
+[BAT] ASUS GL702VMK	bateria/ASUS-GL702VMK.txt
 [BAT] ASUS TP412U	bateria/ASUS-TP412U.txt
+[BAT] ASUS GL702VMK	bateria/ASUS-GL702VMK.txt
 [BAT] ASUS X45C Series	bateria/ASUS-X45C-Series.txt
 [BAT] ASUS X510UR-BQ291T	bateria/ASUS-X510UR-BQ291T.txt
 [BAT] ASUS X510UR-BQ378T	bateria/ASUS-X510UR-BQ378T.txt
 [BAT] Dell Inspiron 5447	bateria/Dell-Inspiron-5447.txt
 [BAT] Dell Vostro 5480	bateria/Dell-Vostro-5480.txt
 [BAT] GPD Pocket 2 MiniLaptop	bateria/GPD-Pocket-MiniLaptop.txt
+[BAT] HP 240G3	bateria/HP 240G3.txt
+[BAT] HP 240G3	bateria/HP-240G3.txt
 [BAT] Itautec InfoWay Note W7730	bateria/Itautec-InfoWay-Note-W7730.txt
 [BAT] Lenovo G40-70	bateria/Lenovo-G40-70.txt
 [BAT] Lenovo G400S	bateria/Lenovo-G400S.txt
@@ -33,9 +37,12 @@
 [FNK] Fn Keys ASUS X510UR	fnkeys/FnKeys-ASUS-X510UR.txt
 [FNK] Fn Keys Lenovo Ideapad 320	fnkeys/FnKeys-Lenovo-Ideapad-320.txt
 [I2C] --> Touchpad I2C Patches	NullPatch.txt
-[I2C] ATMEL Samsung NP350XAA	i2c/ATMEL-Samsung-NP350XAA.txt
+[I2C] ATMEL Samsung NP350XAA V1	i2c/ATMEL-Samsung-NP350XAA.txt
+[I2C] ATMEL Samsung NP350XAA V2	i2c/ATMEL-Samsung-NP350XAA-KFWBR.txt
 [I2C] DELL08CE Dell Inspiron 3481	i2c/DELL08CE-Dell-Inspiron-3481.txt
-[I2C] ELAN Synaptics Lenovo Ideapad 320 i2c/ELAN-Synaptics-Lenovo-Ideapad-320.txt
+[I2C] ELAN Synaptics Lenovo Ideapad 320	i2c/ELAN-Synaptics-Lenovo-Ideapad-320.txt
 [I2C] ELAN Synaptics Lenovo Ideapad 330	i2c/ELAN-Synaptics-Lenovo-Ideapad-330.txt
+[I2C] ELAN1000 ASUS X556URK	i2c/ELAN1000-ASUS-X556URK.txt
 [I2C] ELAN1200 ASUS X510UR	i2c/ELAN1200-ASUS-X510UR.txt
 [I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
+[I2C] Synaptics Lenovo Ideapad S145	i2c/Synaptics-Lenovo-Ideapad-S145.txt

@@ -1,0 +1,318 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# HP 240G3
+#
+
+into device label EC0 code_regex BRC0,\s+16, replaceall_matched begin CRB1,8,CRB2,8, end;
+into method label _BST code_regex \^\^EC0\.BRC0 replaceall_matched begin B1B2(^^EC0.CRB1, ^^EC0.CRB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BRC0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CRB1, ^^PCI0.LPCB.EC0.CRB2) end;
+
+into device label EC0 code_regex BSN0,\s+16, replaceall_matched begin NSB1,8,NSB2,8, end;
+into method label GUBS code_regex BSN0 replaceall_matched begin B1B2(NSB1, NSB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BSN0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.NSB1, ^^PCI0.LPCB.EC0.NSB2) end;
+
+into device label EC0 code_regex BPV0,\s+16, replaceall_matched begin VPB1,8,VPB2,8, end;
+into method label _BST code_regex \^\^EC0\.BPV0 replaceall_matched begin B1B2(^^EC0.VPB1, ^^EC0.VPB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BPV0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VPB1, ^^PCI0.LPCB.EC0.VPB2) end;
+
+into device label EC0 code_regex BDV0,\s+16, replaceall_matched begin VDB1,8,VDB2,8, end;
+into method label _BIF code_regex \^\^EC0\.BDV0 replaceall_matched begin B1B2(^^EC0.VDB1, ^^EC0.VDB2) end;
+into method label _BST code_regex \^\^EC0\.BDV0 replaceall_matched begin B1B2(^^EC0.VDB1, ^^EC0.VDB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BDV0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VDB1, ^^PCI0.LPCB.EC0.VDB2) end;
+
+into device label EC0 code_regex BFC0,\s+16, replaceall_matched begin CFB1,8,CFB2,8, end;
+into method label _BIF code_regex \^\^EC0\.BFC0 replaceall_matched begin B1B2(^^EC0.CFB1, ^^EC0.CFB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BFC0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CFB1, ^^PCI0.LPCB.EC0.CFB2) end;
+
+into device label EC0 code_regex BPC0,\s+16, replaceall_matched begin CPB1,8,CPB2,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BPC0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CPB1, ^^PCI0.LPCB.EC0.CPB2) end;
+
+into device label EC0 code_regex BAC0,\s+16, replaceall_matched begin CAB1,8,CAB2,8, end;
+into method label _BST code_regex \^\^EC0\.BAC0 replaceall_matched begin B1B2(^^EC0.CAB1, ^^EC0.CAB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BAC0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CAB1, ^^PCI0.LPCB.EC0.CAB2) end;
+
+into device label EC0 code_regex BCG0,\s+16, replaceall_matched begin GCB1,8,GCB2,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BCG0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.GCB1, ^^PCI0.LPCB.EC0.GCB2) end;
+
+into device label EC0 code_regex BSSB,\s+16, replaceall_matched begin BSS1,8,BSS2,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BSSB replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.BSS1, ^^PCI0.LPCB.EC0.BSS2) end;
+
+into device label EC0 code_regex BCV1,\s+16, replaceall_matched begin VC11,8,VC12,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BCV1 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VC11, ^^PCI0.LPCB.EC0.VC12) end;
+
+into device label EC0 code_regex BCV2,\s+16, replaceall_matched begin VC21,8,VC22,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BCV2 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VC21, ^^PCI0.LPCB.EC0.VC22) end;
+
+into device label EC0 code_regex BCV3,\s+16, replaceall_matched begin VC31,8,VC32,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BCV3 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VC31, ^^PCI0.LPCB.EC0.VC32) end;
+
+into device label EC0 code_regex BCV4,\s+16, replaceall_matched begin VC41,8,VC42,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BCV4 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VC41, ^^PCI0.LPCB.EC0.VC42) end;
+
+into device label EC0 code_regex BMD0,\s+16, replaceall_matched begin DMB1,8,DMB2,8, end;
+into method label GUBS code_regex BMD0 replaceall_matched begin B1B2(DMB1, DMB2) end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BMD0 replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.DMB1, ^^PCI0.LPCB.EC0.DMB2) end;
+
+into device label EC0 code_regex BACV,\s+16, replaceall_matched begin VCA1,8,VCA2,8, end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BACV replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.VCA1, ^^PCI0.LPCB.EC0.VCA2) end;
+
+into device label EC0 code_regex BFCB,\s+16, replaceall_matched begin BFC1,8,BFC2,8, end;
+into method label _BIF code_regex \^\^EC0\.BFCB replaceall_matched begin B1B2(^^EC0.BFC1, ^^EC0.BFC2) end;
+
+into device label EC0 code_regex BTPB,\s+16, replaceall_matched begin BPT1,8,BPT2,8, end;
+into method label _BTP code_regex \^\^EC0\.BTPB replaceall_matched begin B1B2(^^EC0.BPT1, ^^EC0.BPT2) end;
+
+into device label EC0 code_regex MUAC,\s+16, replaceall_matched begin CAU1,8,CAU2,8, end;
+into method label BATT code_regex \^\^PCI0.LPCB\.EC0\.MUAC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.CAU1, ^^PCI0.LPCB.EC0.CAU2) end;
+
+into device label EC0 code_regex ATTE,\s+16, replaceall_matched begin ETA1,8,ETA2,8, end;
+into method label BATT code_regex \^\^PCI0.LPCB\.EC0\.ATTE replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.ETA1, ^^PCI0.LPCB.EC0.ETA2) end;
+
+into device label EC0 code_regex RTTE,\s+16, replaceall_matched begin ETR1,8,ETR2,8, end;
+into method label BATT code_regex \^\^PCI0.LPCB\.EC0\.RTTE replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.ETR1, ^^PCI0.LPCB.EC0.ETR2) end;
+
+into device label EC0 code_regex ATTF,\s+16, replaceall_matched begin FTA1,8,FTA2,8, end;
+into method label BATT code_regex \^\^PCI0.LPCB\.EC0\.ATTF replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.FTA1, ^^PCI0.LPCB.EC0.FTA2) end;
+
+into device label EC0 code_regex ERIB,\s+16, replaceall_matched begin BIR1,8,BIR2,8, end;
+into method label FANG code_regex ERIB replaceall_matched begin B1B2(BIR1, BIR2) end;
+into method label FANW code_regex ERIB replaceall_matched begin B1B2(BIR1, BIR2) end;
+
+into device label EC0 code_regex PRTM,\s+16, replaceall_matched begin MTR1,8,MTR2,8, end;
+into method label ESDT code_regex \^\^PCI0.LPCB\.EC0\.PRTM replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.MTR1, ^^PCI0.LPCB.EC0.MTR2) end;
+
+#
+#
+#
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+#
+#
+#
+into device label EC0 code_regex SMD0,\s+256 replace_matched 
+begin
+SM00,8,SM01,8,SM02,8,SM03,8,\n
+SM04,8,SM05,8,SM06,8,SM07,8,\n
+SM08,8,SM09,8,SM10,8,SM11,8,\n
+SM12,8,SM13,8,SM14,8,SM15,8,\n
+SM16,8,SM17,8,SM18,8,SM19,8,\n
+SM20,8,SM21,8,SM22,8,SM23,8,\n
+SM24,8,SM25,8,SM26,8,SM27,8,\n
+SM28,8,SM29,8,SM30,8,SM31,8
+end;
+
+into device label EC0 insert
+begin
+Method (RSMD, 0, Serialized)\n
+{\n
+    Name (TEMP, Buffer(0x20) { })\n
+    Store (SM00, Index(TEMP, 0x00))\n
+    Store (SM01, Index(TEMP, 0x01))\n
+    Store (SM02, Index(TEMP, 0x02))\n
+    Store (SM03, Index(TEMP, 0x03))\n
+    Store (SM04, Index(TEMP, 0x04))\n
+    Store (SM05, Index(TEMP, 0x05))\n
+    Store (SM06, Index(TEMP, 0x06))\n
+    Store (SM07, Index(TEMP, 0x07))\n
+    Store (SM08, Index(TEMP, 0x08))\n
+    Store (SM09, Index(TEMP, 0x09))\n
+    Store (SM10, Index(TEMP, 0x0A))\n
+    Store (SM11, Index(TEMP, 0x0B))\n
+    Store (SM12, Index(TEMP, 0x0C))\n
+    Store (SM13, Index(TEMP, 0x0D))\n
+    Store (SM14, Index(TEMP, 0x0E))\n
+    Store (SM15, Index(TEMP, 0x0F))\n
+    Store (SM16, Index(TEMP, 0x10))\n
+    Store (SM17, Index(TEMP, 0x11))\n
+    Store (SM18, Index(TEMP, 0x12))\n
+    Store (SM19, Index(TEMP, 0x13))\n
+    Store (SM20, Index(TEMP, 0x14))\n
+    Store (SM21, Index(TEMP, 0x15))\n
+    Store (SM22, Index(TEMP, 0x16))\n
+    Store (SM23, Index(TEMP, 0x17))\n
+    Store (SM24, Index(TEMP, 0x18))\n
+    Store (SM25, Index(TEMP, 0x19))\n
+    Store (SM26, Index(TEMP, 0x1A))\n
+    Store (SM27, Index(TEMP, 0x1B))\n
+    Store (SM28, Index(TEMP, 0x1C))\n
+    Store (SM29, Index(TEMP, 0x1D))\n
+    Store (SM30, Index(TEMP, 0x1E))\n
+    Store (SM31, Index(TEMP, 0x1F))\n
+    Return (TEMP)\n
+}\n
+end;
+
+into device label EC0 insert
+begin
+Method (WSMD, 1, Serialized)\n
+{\n
+    Name (TEMP, Buffer(0x20) { })\n
+    Store (Arg0, TEMP)\n
+    Store (DerefOf(Index(TEMP, 0x00)), SM00)\n
+    Store (DerefOf(Index(TEMP, 0x01)), SM01)\n
+    Store (DerefOf(Index(TEMP, 0x02)), SM02)\n
+    Store (DerefOf(Index(TEMP, 0x03)), SM03)\n
+    Store (DerefOf(Index(TEMP, 0x04)), SM04)\n
+    Store (DerefOf(Index(TEMP, 0x05)), SM05)\n
+    Store (DerefOf(Index(TEMP, 0x06)), SM06)\n
+    Store (DerefOf(Index(TEMP, 0x07)), SM07)\n
+    Store (DerefOf(Index(TEMP, 0x08)), SM08)\n
+    Store (DerefOf(Index(TEMP, 0x09)), SM09)\n
+    Store (DerefOf(Index(TEMP, 0x0A)), SM10)\n
+    Store (DerefOf(Index(TEMP, 0x0B)), SM11)\n
+    Store (DerefOf(Index(TEMP, 0x0C)), SM12)\n
+    Store (DerefOf(Index(TEMP, 0x0D)), SM13)\n
+    Store (DerefOf(Index(TEMP, 0x0E)), SM14)\n
+    Store (DerefOf(Index(TEMP, 0x0F)), SM15)\n
+    Store (DerefOf(Index(TEMP, 0x10)), SM16)\n
+    Store (DerefOf(Index(TEMP, 0x11)), SM17)\n
+    Store (DerefOf(Index(TEMP, 0x12)), SM18)\n
+    Store (DerefOf(Index(TEMP, 0x13)), SM19)\n
+    Store (DerefOf(Index(TEMP, 0x14)), SM20)\n
+    Store (DerefOf(Index(TEMP, 0x15)), SM21)\n
+    Store (DerefOf(Index(TEMP, 0x16)), SM22)\n
+    Store (DerefOf(Index(TEMP, 0x17)), SM23)\n
+    Store (DerefOf(Index(TEMP, 0x18)), SM24)\n
+    Store (DerefOf(Index(TEMP, 0x19)), SM25)\n
+    Store (DerefOf(Index(TEMP, 0x1A)), SM26)\n
+    Store (DerefOf(Index(TEMP, 0x1B)), SM27)\n
+    Store (DerefOf(Index(TEMP, 0x1C)), SM28)\n
+    Store (DerefOf(Index(TEMP, 0x1D)), SM29)\n
+    Store (DerefOf(Index(TEMP, 0x1E)), SM30)\n
+    Store (DerefOf(Index(TEMP, 0x1F)), SM31)\n
+}\n
+end;
+
+#
+#
+#
+into device label EC0 code_regex BCTL,\s+128 replace_matched 
+begin
+BC00,8,BC01,8,BC02,8,BC03,8,\n
+BC04,8,BC05,8,BC06,8,BC07,8,\n
+BC08,8,BC09,8,BC10,8,BC11,8,\n
+BC12,8,BC13,8,BC14,8,BC15,8
+end;
+
+into device label EC0 insert
+begin
+Method (RBCT, 0, Serialized)\n
+{\n
+    Name (TEMP, Buffer(0x20) { })\n
+    Store (BC00, Index(TEMP, 0x00))\n
+    Store (BC01, Index(TEMP, 0x01))\n
+    Store (BC02, Index(TEMP, 0x02))\n
+    Store (BC03, Index(TEMP, 0x03))\n
+    Store (BC04, Index(TEMP, 0x04))\n
+    Store (BC05, Index(TEMP, 0x05))\n
+    Store (BC06, Index(TEMP, 0x06))\n
+    Store (BC07, Index(TEMP, 0x07))\n
+    Store (BC08, Index(TEMP, 0x08))\n
+    Store (BC09, Index(TEMP, 0x09))\n
+    Store (BC10, Index(TEMP, 0x0A))\n
+    Store (BC11, Index(TEMP, 0x0B))\n
+    Store (BC12, Index(TEMP, 0x0C))\n
+    Store (BC13, Index(TEMP, 0x0D))\n
+    Store (BC14, Index(TEMP, 0x0E))\n
+    Store (BC15, Index(TEMP, 0x0F))\n
+    Return (TEMP)\n
+}\n
+end;
+
+#
+#
+#
+into device label EC0 code_regex BMNN,\s+72 replace_matched 
+begin
+BM00,8,BM01,8,BM02,8,BM03,8,\n
+BM04,8,BM05,8,BM06,8,BM07,8,\n
+BM08,8
+end;
+
+into device label EC0 insert
+begin
+Method (RBMN, 0, Serialized)\n
+{\n
+    Name (TEMP, Buffer(0x20) { })\n
+    Store (BM00, Index(TEMP, 0x00))\n
+    Store (BM01, Index(TEMP, 0x01))\n
+    Store (BM02, Index(TEMP, 0x02))\n
+    Store (BM03, Index(TEMP, 0x03))\n
+    Store (BM04, Index(TEMP, 0x04))\n
+    Store (BM05, Index(TEMP, 0x05))\n
+    Store (BM06, Index(TEMP, 0x06))\n
+    Store (BM07, Index(TEMP, 0x07))\n
+    Store (BM08, Index(TEMP, 0x08))\n
+    Return (TEMP)\n
+}\n
+end;
+
+#
+#
+#
+into device label EC0 code_regex BTDC,\s+64 replace_matched 
+begin
+BT00,8,BT01,8,BT02,8,BT03,8,\n
+BT04,8,BT05,8,BT06,8,BT07,8
+end;
+
+into device label EC0 insert
+begin
+Method (RBTD, 0, Serialized)\n
+{\n
+    Name (TEMP, Buffer(0x20) { })\n
+    Store (BT00, Index(TEMP, 0x00))\n
+    Store (BT01, Index(TEMP, 0x01))\n
+    Store (BT02, Index(TEMP, 0x02))\n
+    Store (BT03, Index(TEMP, 0x03))\n
+    Store (BT04, Index(TEMP, 0x04))\n
+    Store (BT05, Index(TEMP, 0x05))\n
+    Store (BT06, Index(TEMP, 0x06))\n
+    Store (BT07, Index(TEMP, 0x07))\n
+    Return (TEMP)\n
+}\n
+end;
+
+#
+#
+#
+into device label EC0 code_regex BDVN,\s+56 replace_matched 
+begin
+BD00,8,BD01,8,BD02,8,BD03,8,\n
+BD04,8,BD05,8,BD06,8,BD07,8
+end;
+
+into device label EC0 insert
+begin
+Method (RBDV, 0, Serialized)\n
+{\n
+    Name (TEMP, Buffer(0x20) { })\n
+    Store (BD00, Index(TEMP, 0x00))\n
+    Store (BD01, Index(TEMP, 0x01))\n
+    Store (BD02, Index(TEMP, 0x02))\n
+    Store (BD03, Index(TEMP, 0x03))\n
+    Store (BD04, Index(TEMP, 0x04))\n
+    Store (BD05, Index(TEMP, 0x05))\n
+    Store (BD06, Index(TEMP, 0x06))\n
+    Store (BD07, Index(TEMP, 0x07))\n
+    Return (TEMP)\n
+}\n
+end;
+
+into method label CFUN code_regex SMD0\s+=\s+(.*) replaceall_matched begin WSMD(%1) end;
+into method label CFUN code_regex (.*)\s+=\s+SMD0 replaceall_matched begin %1 = RSMD() end;
+
+into method label BATT code_regex (.*)\s+=\s+\^\^PCI0\.LPCB\.EC0\.BCTL replaceall_matched begin %1 = ^^PCI0.LPCB.EC0.RBCT() end;
+
+into method label GUBT code_regex (.*)\s+=\s+BTDC replaceall_matched begin %1 = RBTD() end;
+into method label BATT code_regex \^\^PCI0\.LPCB\.EC0\.BTDC replaceall_matched begin ^^PCI0.LPCB.EC0.RBTD() end;
+
+into method label GUBI code_regex (.*)\s+=\s+BMNN replaceall_matched begin %1 = RBMN() end;
+into method label BATT code_regex (.*)\s+=\s+\^\^PCI0\.LPCB\.EC0\.BMNN replaceall_matched begin %1 = ^^PCI0.LPCB.EC0.RBMN() end;
+
+into method label GBMN code_regex (.*)\s+=\s+BDVN replaceall_matched begin %1 = RBDV() end;

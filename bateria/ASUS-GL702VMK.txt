@@ -1,14 +1,8 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
-# Baseado no Lenovo-y580 by RehabMan.
-#
 # ASUS GL702VMK
-# ASUS X45C Series
 
-
-into device label EC0 code_regex TAH0,\s+16, replace_matched begin XHA1,8,XHA2,8, end;
-into device label EC0 code_regex TAH1,\s+16, replace_matched begin XH11,8,XH12,8, end;
 into device label EC0 code_regex B0C3,\s+16, replace_matched begin XC31,8,XC32,8, end;
 into device label EC0 code_regex B0SN,\s+16, replace_matched begin XNS1,8,XNS2,8, end;
 into device label EC0 code_regex B0VL,\s+16, replace_matched begin XVL1,8,XVL2,8, end;
@@ -33,8 +27,9 @@ into device label EC0 code_regex DT2B,\s+16 replace_matched begin T2B1,8,T2B2,8 
 #
 #
 #
-into method label TACH code_regex TAH0 replaceall_matched begin B1B2(XHA1, XHA2) end;
-into method label TACH code_regex TAH1 replaceall_matched begin B1B2(XH11, XH12) end;
+into method label SMBR code_regex DT2B replaceall_matched begin B1B2(T2B1, T2B2) end;
+into method label SMBW code_regex DT2B replaceall_matched begin B1B2(T2B1, T2B2) end;
+
 into method label _BIX code_regex \^\^LPCB\.EC0\.B0C3 replaceall_matched begin B1B2(^^LPCB.EC0.XC31, ^^LPCB.EC0.XC32) end;
 into method label _BIX code_regex B0C3 replaceall_matched begin B1B2(XC31, XC32) end;
 into method label BIFA code_regex B0SN replaceall_matched begin B1B2(XNS1, XNS2) end;
@@ -79,8 +74,6 @@ into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B1DV replaceall_matched b
 into method label BIF4 code_regex B1DV replaceall_matched begin B1B2(XV11, XV12) end;
 
 into method label BIFA code_regex B1SN replaceall_matched begin B1B2(XSN1, XSN2) end;
-into method label SMBR code_regex DT2B replaceall_matched begin B1B2(T2B1, T2B2) end;
-into method label SMBW code_regex DT2B replaceall_matched begin B1B2(T2B1, T2B2) end;
 
 #
 #
@@ -97,13 +90,9 @@ end;
 into device label EC0 code_regex BDAT,\s+256, replace_matched begin BDAX,   256, end;
 into device label EC0 code_regex BDA2,\s+256, replace_matched begin BDAY,   256, end;
 
-into method label SMBR code_regex Store\s+\((.*),\s+BDAT\) replaceall_matched begin WECB(0x1c,256,%1) end;
-into method label SMBW code_regex Store\s+\((.*),\s+BDAT\) replaceall_matched begin WECB(0x1c,256,%1) end;
-into method label ECSB code_regex Store\s+\((.*),\s+BDAT\) replaceall_matched begin WECB(0x1c,256,%1) end;
-into method label ECSB code_regex Store\s+\((.*),\s+BDA2\) replaceall_matched begin WECB(0x44,256,%1) end;
-into method label ECSB code_regex \(BDAT, replaceall_matched begin (RECB(0x1c,256), end;
-into method label ECSB code_regex \(BDA2, replaceall_matched begin (RECB(0x44,256), end;
-into method label SMBR code_regex \(BDAT, replaceall_matched begin (RECB(0x1c,256), end;
+into method label SMBR code_regex BDAT\s+=\s+(.*) replaceall_matched begin WECB(0x1c,256,%1) end;
+into method label SMBR code_regex (.*)\s+=\s+BDAT replaceall_matched begin RECB(0x44,256) end;
+into method label SMBW code_regex BDAT\s+=\s+(.*) replaceall_matched begin WECB(0x1c,256,%1) end;
 
 into method label RE1B parent_label EC0 remove_entry;
 into method label RECB parent_label EC0 remove_entry;
