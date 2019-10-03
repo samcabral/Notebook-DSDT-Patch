@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Samsung NP270E5J-XD1BR
 # Samsung NP270E5J-XD3BR
 # Samsung NP300E5M-XD1BR

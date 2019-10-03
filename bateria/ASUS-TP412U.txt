@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # ASUS TP412U
 
 into device label H_EC code_regex B1DC,\s+16, replace_matched begin X1D1,8,X1D2,8, end;

@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Lenovo LNV1325
 
 into device label EC0 code_regex XIF0,\s+16, replace_matched begin X001,8,X002,8, end;

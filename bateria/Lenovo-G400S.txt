@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Baseado no Lenovo-y580 by RehabMan.
 #
 # Lenovo G400S

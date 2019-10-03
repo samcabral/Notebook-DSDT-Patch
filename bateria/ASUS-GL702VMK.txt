@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # ASUS GL702VMK
 
 into device label EC0 code_regex B0C3,\s+16, replace_matched begin XC31,8,XC32,8, end;

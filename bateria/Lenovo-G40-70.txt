@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Lenovo G40-70
 
 into device label EC0 code_regex B1RC,\s+16, replace_matched begin BRC1,8,BRC2,8, end;

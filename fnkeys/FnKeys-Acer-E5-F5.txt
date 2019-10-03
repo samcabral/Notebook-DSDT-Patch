@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # FnKeys Brightness para SmartTouchPad (Synaptics)) by EMlyDinEsH
 # Acer Aspire F5-573G-50KS
 # Acer Aspire E5-574-307M

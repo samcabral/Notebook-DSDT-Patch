@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Baseado no Samsung_NP730U3E_X04IT by RehabMan.
 #
 # Samsung NP800G5M-XG1BR

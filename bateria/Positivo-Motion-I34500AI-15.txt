@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Positivo Motion I34500AI-15
 
 into device label EC0 code_regex XIF1,\s+16, replace_matched begin CP10,8,CP11,8, end;

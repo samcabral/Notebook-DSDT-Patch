@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Acer E1 571
 
 into device label EC0 code_regex BSN0,\s+16, replace_matched begin BN01,8,BN02,8, end;

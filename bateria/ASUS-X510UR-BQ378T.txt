@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # ASUS X510UR-BQ378T
 
 into device label EC code_regex B0C3,\s+16, replace_matched begin B030,8,B031,8, end;

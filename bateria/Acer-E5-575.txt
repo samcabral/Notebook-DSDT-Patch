@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Acer E5 575
 
 into device label EC0 code_regex MCUR,\s+16, replace_matched begin MC01,8,MC02,8, end;

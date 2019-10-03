@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Dell Vostro 5480
 
 into device label EC code_regex CAP0,\s+16, replace_matched begin CPS1,8,CPS2,8, end;

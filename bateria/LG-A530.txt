@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # LG A530
 
 into device label EC0 code_regex DSCP,\s+16, replace_matched begin CPS1,8,CPS2,8, end;

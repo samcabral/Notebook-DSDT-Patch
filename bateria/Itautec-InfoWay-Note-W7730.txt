@@ -1,6 +1,9 @@
 # Grupo: Hackintosh Brasil
 # Autor: Samuel Cabral
 #
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
 # Itautec InfoWay Note W7730
 
 into device label EC code_regex BDC0,\s+32, replace_matched begin BD01,8,BD02,8,BD03,8,BD04,8, end;
