@@ -9,7 +9,8 @@
 [BAT] ASUS X45C Series	bateria/ASUS-X45C-Series.txt
 [BAT] ASUS X510UR-BQ291T	bateria/ASUS-X510UR-BQ291T.txt
 [BAT] ASUS X510UR-BQ378T	bateria/ASUS-X510UR-BQ378T.txt
-[BAT] Dell Inspiron 5447	bateria/Dell-Inspiron-5447.txt
+[BAT] Dell Inspiron 5447    bateria/Dell-Inspiron-5447.txt
+[BAT] Dell Inspiron 5448	bateria/Dell-Inspiron-5448.txt
 [BAT] Dell Vostro 5480	bateria/Dell-Vostro-5480.txt
 [BAT] GPD Pocket 2 MiniLaptop	bateria/GPD-Pocket-MiniLaptop.txt
 [BAT] HP 240G3	bateria/HP 240G3.txt
@@ -19,7 +20,8 @@
 [BAT] Lenovo Ideapad 330S	bateria/Lenovo-Ideapad-330S.txt
 [BAT] Lenovo LNV L1325	bateria/Lenovo-LNV-L1325.txt
 [BAT] LG A530	bateria/LG-A530.txt
-[BAT] Positivo Master N190I	bateria/Positivo-Master-N190I.txt
+[BAT] Positivo Master N190I bateria/Positivo-Master-N190I.txt
+[BAT] Positivo XC7660	bateria/Positivo-Master-N190I.txt
 [BAT] Positivo Motion I34500AI-15	bateria/Positivo-Motion-I34500AI-15.txt
 [BAT] Positivo Premiun-XS7320	bateria/Positivo-Premiun-XS7320.txt
 [BAT] Samsung NP270E5G-XD1BR	bateria/Samsung-NP270E5G-XD1BR.txt
@@ -30,6 +32,7 @@
 [BAT] Samsung NP350XAA-VD1BR	bateria/Samsung-NP350XAA-VD1BR.txt
 [BAT] Samsung NP350XAA-KFWBR	bateria/Samsung-NP350XAA-VD1BR.txt
 [BAT] Samsung NP500R4L-KS1BR	bateria/Samsung-NP500R4L-KS1BR.txt
+[BAT] Samsung NP530U3C-KD2BR    bateria/Samsung-NP270E5G-XD1BR.txt
 [BAT] Samsung NP800G5M-XG1BR	bateria/Samsung-NP800G5M-XG1BR.txt
 [FNK] --> FnKeys Patches	NullPatch.txt
 [FNK] Fn Keys Acer E5 F5	fnkeys/FnKeys-Acer-E5-F5.txt
