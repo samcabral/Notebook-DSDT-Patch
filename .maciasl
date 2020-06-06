@@ -9,7 +9,7 @@
 [BAT] ASUS X45C Series	bateria/ASUS-X45C-Series.txt
 [BAT] ASUS X510UR-BQ291T	bateria/ASUS-X510UR-BQ291T.txt
 [BAT] ASUS X510UR-BQ378T	bateria/ASUS-X510UR-BQ378T.txt
-[BAT] Dell Inspiron 5447    bateria/Dell-Inspiron-5447.txt
+[BAT] Dell Inspiron 5447	bateria/Dell-Inspiron-5447.txt
 [BAT] Dell Inspiron 5448	bateria/Dell-Inspiron-5448.txt
 [BAT] Dell Vostro 5480	bateria/Dell-Vostro-5480.txt
 [BAT] GPD Pocket 2 MiniLaptop	bateria/GPD-Pocket-MiniLaptop.txt
@@ -32,7 +32,7 @@
 [BAT] Samsung NP350XAA-VD1BR	bateria/Samsung-NP350XAA-VD1BR.txt
 [BAT] Samsung NP350XAA-KFWBR	bateria/Samsung-NP350XAA-VD1BR.txt
 [BAT] Samsung NP500R4L-KS1BR	bateria/Samsung-NP500R4L-KS1BR.txt
-[BAT] Samsung NP530U3C-KD2BR    bateria/Samsung-NP270E5G-XD1BR.txt
+[BAT] Samsung NP530U3C-KD2BR	bateria/Samsung-NP270E5G-XD1BR.txt
 [BAT] Samsung NP800G5M-XG1BR	bateria/Samsung-NP800G5M-XG1BR.txt
 [FNK] --> FnKeys Patches	NullPatch.txt
 [FNK] Fn Keys Acer E5 F5	fnkeys/FnKeys-Acer-E5-F5.txt
