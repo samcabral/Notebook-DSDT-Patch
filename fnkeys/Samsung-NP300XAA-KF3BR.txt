@@ -1,7 +1,7 @@
 # Grupo: Hackintosh Brasil
 # Autor: Jonas Wander
 #
-# Compatível com MaciASL (fork Rehabman).
+# CompatÃ­vel com MaciASL (fork Rehabman).
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 #
 # FN Keys Brighness
