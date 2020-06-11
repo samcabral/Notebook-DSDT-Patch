@@ -38,7 +38,7 @@
 [FNK] Fn Keys Acer E5 F5	fnkeys/FnKeys-Acer-E5-F5.txt
 [FNK] Fn Keys ASUS X510UR	fnkeys/FnKeys-ASUS-X510UR.txt
 [FNK] Fn Keys Lenovo Ideapad 320	fnkeys/FnKeys-Lenovo-Ideapad-320.txt
-[FNK] Fn Keys Samsung NP300XAA-KF3BR  fnkeys/Samsung-NP300XAA-KF3BR.txt
+[FNK] Fn Keys Samsung NP300XAA KF3BR	fnkeys/Samsung-NP300XAA-KF3BR.txt
 [I2C] --> Touchpad I2C Patches	NullPatch.txt
 [I2C] ATMEL Samsung NP350XAA V1	i2c/ATMEL-Samsung-NP350XAA.txt
 [I2C] ATMEL Samsung NP350XAA V2	i2c/ATMEL-Samsung-NP350XAA-KFWBR.txt
