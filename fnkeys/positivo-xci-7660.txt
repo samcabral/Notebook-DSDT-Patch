@@ -1,0 +1,19 @@
+# Grupo: Hackintosh Brasil
+# https://hackintoshbrasil.com/forum/
+# Autor: Jonas Wander
+# Compatível com MaciASL (fork Rehabman)
+#
+# FnKeys Brightness para ApplePS2SmartTouchPad by EMlyDinEsH
+# 
+#Compatível com Positivo XCI 7660
+#
+into method label _Q14 replace_content
+begin
+// Brightness Down\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x20)\n
+end;
+into method label _Q15 replace_content
+begin
+// Brightness Up\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x10)\n
+end;
