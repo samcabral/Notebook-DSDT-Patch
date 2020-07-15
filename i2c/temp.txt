@@ -1,0 +1,21 @@
+
+
+into device label TPD1 code_regex 0x00000000 replace_matched
+begin
+0x110
+end; 
+
+into method label _CRS parent_label TPD1 replace_content
+begin
+Return (ConcatenateResTemplate (SBFB, SBFG))
+end;
+
+into method label _STA parent_label TPD1 replace_content
+begin
+Return (0x0F)
+end;
+
+into method label _STA parent_label GPI0 replace_content
+begin
+Return (0x0F)
+end;
