@@ -52,3 +52,4 @@
 [I2C] ELAN1200 ASUS X510UR	i2c/ELAN1200-ASUS-X510UR.txt
 [I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
 [I2C] Synaptics Lenovo Ideapad S145	i2c/Synaptics-Lenovo-Ideapad-S145.txt
+[I2c} temporario	i2c/temp.txt
