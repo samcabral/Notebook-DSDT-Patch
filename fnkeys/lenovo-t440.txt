@@ -1,0 +1,22 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman).
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# FN Keys Brighness
+# Lenovo ThinkPad T440
+# Need VoodooPS2 kext by AcidAnthera
+
+into method label _Q15 replace_content
+begin
+// Brightness Down\n
+Notify(\_SB.PCI0.LPCB.KBD, 0x0205)\n
+Notify(\_SB.PCI0.LPCB.KBD, 0x0285)\n
+end;
+into method label _Q14 replace_content
+begin
+// Brightness Up\n
+Notify(\_SB.PCI0.LPCB.KBD, 0x0206)\n
+Notify(\_SB.PCI0.LPCB.KBD, 0x0286)\n
+end;
