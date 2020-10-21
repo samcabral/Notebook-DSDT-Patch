@@ -1,0 +1,11 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+# https://hackintoshbrasil.com/forum/
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# Renomear EC0 para EC
+
+into_all all code_regex EC0\. replaceall_matched begin EC. end; 
+into_all all label EC0 set_label begin EC end; 
