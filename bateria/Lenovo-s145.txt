@@ -8,14 +8,14 @@
 # Lenovo IdeaPad S145-IKB
 #
 
-# METHOD FOR 16 BITS
+# METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
 into definitionblock code_regex . insert
 begin
 Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
 end;
 
-#METHODS FOR MORE THAN 32 BITS
+#METHODS FOR MORE THAN 32 BITS - CREDITS REHABMAN
 into method label RE1B parent_label EC0 remove_entry;
 into method label RECB parent_label EC0 remove_entry;
 into device label EC0 insert
