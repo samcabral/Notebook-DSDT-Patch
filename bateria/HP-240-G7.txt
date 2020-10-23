@@ -1,0 +1,191 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+# https://hackintoshbrasil.com/forum
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+# 
+# HP 240 G7
+#
+
+# METHOD FOR 16 BITS - CREDITS REHABMAN
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+# METHOD FOR 32 BITS - CREDITS REHABMAN
+into method label B1B4 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B4, 4, NotSerialized)\n
+{\n
+    Store(Arg3, Local0)\n
+    Or(Arg2, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg1, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg0, ShiftLeft(Local0, 8), Local0)\n
+    Return(Local0)\n
+}\n
+end;
+
+# METHODS FOR MORE THAN 32 BITS - CREDITS REHABMAN
+into method label RE1B parent_label H_EC remove_entry;
+into method label RECB parent_label H_EC remove_entry;
+into device label H_EC insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+Method (RECB, 2, Serialized)\n
+// Arg0 - offset in bytes from zero-based EC\n
+// Arg1 - size of buffer in bits\n
+{\n
+    ShiftRight(Add(Arg1,7), 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
+# FIX 16 BITS
+
+into scope label ^^LPCB code_regex FANR,\s+16 replace_matched begin FA00,8,FA01,8 end;
+into scope label ^^LPCB code_regex BDC0,\s+16 replace_matched begin BD00,8,BD01,8 end;
+into scope label ^^LPCB code_regex BDC1,\s+16 replace_matched begin BD02,8,BD03,8 end;
+into scope label ^^LPCB code_regex BFC0,\s+16 replace_matched begin BF00,8,BF01,8 end;
+into scope label ^^LPCB code_regex BFC1,\s+16 replace_matched begin BF02,8,BF03,8 end;
+into scope label ^^LPCB code_regex BDV0,\s+16 replace_matched begin DV00,8,DV01,8 end;
+into scope label ^^LPCB code_regex BDV1,\s+16 replace_matched begin DV02,8,DV03,8 end;
+into scope label ^^LPCB code_regex BPR0,\s+16 replace_matched begin BP00,8,BP01,8 end;
+into scope label ^^LPCB code_regex BPR1,\s+16 replace_matched begin BP02,8,BP03,8 end;
+into scope label ^^LPCB code_regex BRC0,\s+16 replace_matched begin BR00,8,BR01,8 end;
+into scope label ^^LPCB code_regex BRC1,\s+16 replace_matched begin BR02,8,BR03,8 end;
+into scope label ^^LPCB code_regex BCC0,\s+16 replace_matched begin CC00,8,CC01,8 end;
+into scope label ^^LPCB code_regex BCC1,\s+16 replace_matched begin CC02,8,CC03,8 end;
+into scope label ^^LPCB code_regex CV01,\s+16 replace_matched begin CV00,8,CV01,8 end;
+into scope label ^^LPCB code_regex CV02,\s+16 replace_matched begin CV02,8,CV03,8 end;
+into scope label ^^LPCB code_regex CV03,\s+16 replace_matched begin CV04,8,CV05,8 end;
+into scope label ^^LPCB code_regex CV04,\s+16 replace_matched begin CV06,8,CV07,8 end;
+into scope label ^^LPCB code_regex CV11,\s+16 replace_matched begin CV10,8,CV11,8 end;
+into scope label ^^LPCB code_regex CV12,\s+16 replace_matched begin CV12,8,CV13,8 end;
+into scope label ^^LPCB code_regex CV13,\s+16 replace_matched begin CV14,8,CV15,8 end;
+into scope label ^^LPCB code_regex CV14,\s+16 replace_matched begin CV16,8,CV17,8 end;
+into scope label ^^LPCB code_regex HPBA,\s+16 replace_matched begin BA00,8,BA01,8 end;
+into scope label ^^LPCB code_regex HPBB,\s+16 replace_matched begin BB00,8,BB01,8 end;
+into scope label ^^LPCB code_regex BMD0,\s+16 replace_matched begin D000,8,D001,8 end;
+into scope label ^^LPCB code_regex BMD1,\s+16 replace_matched begin D100,8,D101,8 end;
+into scope label ^^LPCB code_regex BPV0,\s+16 replace_matched begin V000,8,V001,8 end;
+into scope label ^^LPCB code_regex BPV1,\s+16 replace_matched begin V100,8,V101,8 end;
+into scope label ^^LPCB code_regex BSN0,\s+16 replace_matched begin BS00,8,BS01,8 end;
+into scope label ^^LPCB code_regex BSN1,\s+16 replace_matched begin BS02,8,BS03,8 end;
+into scope label ^^LPCB code_regex BCV0,\s+16 replace_matched begin BC00,8,BC01,8 end;
+into scope label ^^LPCB code_regex BCV1,\s+16 replace_matched begin BC02,8,BC03,8 end;
+into scope label ^^LPCB code_regex CRG0,\s+16 replace_matched begin CR00,8,CR01,8 end;
+into scope label ^^LPCB code_regex CRG1,\s+16 replace_matched begin CR02,8,CR03,8 end;
+into scope label ^^LPCB code_regex CBT0,\s+16 replace_matched begin CB00,8,CB01,8 end;
+into scope label ^^LPCB code_regex CBT1,\s+16 replace_matched begin CB02,8,CB03,8 end;
+
+into device label H_EC code_regex FANR,\s+16 replace_matched begin FA00,8,FA01,8 end;
+into device label H_EC code_regex BDC0,\s+16 replace_matched begin BD00,8,BD01,8 end;
+into device label H_EC code_regex BDC1,\s+16 replace_matched begin BD02,8,BD03,8 end;
+into device label H_EC code_regex BFC0,\s+16 replace_matched begin BF00,8,BF01,8 end;
+into device label H_EC code_regex BFC1,\s+16 replace_matched begin BF02,8,BF03,8 end;
+into device label H_EC code_regex BDV0,\s+16 replace_matched begin DV00,8,DV01,8 end;
+into device label H_EC code_regex BDV1,\s+16 replace_matched begin DV02,8,DV03,8 end;
+into device label H_EC code_regex BPR0,\s+16 replace_matched begin BP00,8,BP01,8 end;
+into device label H_EC code_regex BPR1,\s+16 replace_matched begin BP02,8,BP03,8 end;
+into device label H_EC code_regex BRC0,\s+16 replace_matched begin BR00,8,BR01,8 end;
+into device label H_EC code_regex BRC1,\s+16 replace_matched begin BR02,8,BR03,8 end;
+into device label H_EC code_regex BCC0,\s+16 replace_matched begin CC00,8,CC01,8 end;
+into device label H_EC code_regex BCC1,\s+16 replace_matched begin CC02,8,CC03,8 end;
+into device label H_EC code_regex CV01,\s+16 replace_matched begin CV00,8,CV01,8 end;
+into device label H_EC code_regex CV02,\s+16 replace_matched begin CV02,8,CV03,8 end;
+into device label H_EC code_regex CV03,\s+16 replace_matched begin CV04,8,CV05,8 end;
+into device label H_EC code_regex CV04,\s+16 replace_matched begin CV06,8,CV07,8 end;
+into device label H_EC code_regex CV11,\s+16 replace_matched begin CV10,8,CV11,8 end;
+into device label H_EC code_regex CV12,\s+16 replace_matched begin CV12,8,CV13,8 end;
+into device label H_EC code_regex CV13,\s+16 replace_matched begin CV14,8,CV15,8 end;
+into device label H_EC code_regex CV14,\s+16 replace_matched begin CV16,8,CV17,8 end;
+into device label H_EC code_regex HPBA,\s+16 replace_matched begin BA00,8,BA01,8 end;
+into device label H_EC code_regex HPBB,\s+16 replace_matched begin BB00,8,BB01,8 end;
+into device label H_EC code_regex BMD0,\s+16 replace_matched begin D000,8,D001,8 end;
+into device label H_EC code_regex BMD1,\s+16 replace_matched begin D100,8,D101,8 end;
+into device label H_EC code_regex BPV0,\s+16 replace_matched begin V000,8,V001,8 end;
+into device label H_EC code_regex BPV1,\s+16 replace_matched begin V100,8,V101,8 end;
+into device label H_EC code_regex BSN0,\s+16 replace_matched begin BS00,8,BS01,8 end;
+into device label H_EC code_regex BSN1,\s+16 replace_matched begin BS02,8,BS03,8 end;
+into device label H_EC code_regex BCV0,\s+16 replace_matched begin BC00,8,BC01,8 end;
+into device label H_EC code_regex BCV1,\s+16 replace_matched begin BC02,8,BC03,8 end;
+into device label H_EC code_regex CRG0,\s+16 replace_matched begin CR00,8,CR01,8 end;
+into device label H_EC code_regex CRG1,\s+16 replace_matched begin CR02,8,CR03,8 end;
+into device label H_EC code_regex CBT0,\s+16 replace_matched begin CB00,8,CB01,8 end;
+into device label H_EC code_regex CBT1,\s+16 replace_matched begin CB02,8,CB03,8 end;
+
+Into method label GBTI code_regex \^\^BDC0 replaceall_matched begin B1B2(\^\^BD00, \^\^BD01) end;
+Into method label GBTI code_regex \^\^BFC0 replaceall_matched begin B1B2(\^\^BF00, \^\^BF01) end;
+Into method label GBTI code_regex \^\^BDV0 replaceall_matched begin B1B2(\^\^DV00, \^\^DV01) end;
+Into method label GBTI code_regex \^\^BPR0 replaceall_matched begin B1B2(\^\^BP00, \^\^BP01) end;
+Into method label GBTI code_regex \^\^BCC0 replaceall_matched begin B1B2(\^\^CC00, \^\^CC01) end;
+Into method label GBTI code_regex \^\^BMD0 replaceall_matched begin B1B2(\^\^D000, \^\^D001) end;
+Into method label GBTI code_regex \^\^BPV0 replaceall_matched begin B1B2(\^\^V000, \^\^V001) end;
+Into method label GBTI code_regex \^\^BSN0 replaceall_matched begin B1B2(\^\^BS00, \^\^BS01) end;
+Into method label GBTI code_regex \^\^BCV0 replaceall_matched begin B1B2(\^\^BC00, \^\^BC01) end;
+Into method label GBTI code_regex \^\^CRG0 replaceall_matched begin B1B2(\^\^CR00, \^\^CR01) end;
+Into method label GBTI code_regex \^\^CBT0 replaceall_matched begin B1B2(\^\^CB00, \^\^CB01) end;
+Into method label GBTI code_regex \^\^BRC0 replaceall_matched begin B1B2(\^\^BR00, \^\^BR01) end;
+
+Into method label BTIF code_regex \^\^BFC0 replaceall_matched begin B1B2(\^\^BF00, \^\^BF01) end;
+Into method label BTIF code_regex \^\^BFC1 replaceall_matched begin B1B2(\^\^BF02, \^\^BF03) end;
+Into method label BTIF code_regex \^\^BDV0 replaceall_matched begin B1B2(\^\^DV00, \^\^DV01) end;
+Into method label BTIF code_regex \^\^BDV1 replaceall_matched begin B1B2(\^\^DV02, \^\^DV03) end;
+Into method label BTIF code_regex \^\^BMD0 replaceall_matched begin B1B2(\^\^D000, \^\^D001) end;
+Into method label BTIF code_regex \^\^BMD1 replaceall_matched begin B1B2(\^\^D100, \^\^D101) end;
+Into method label BTIF code_regex \^\^BSN0 replaceall_matched begin B1B2(\^\^BS00, \^\^BS01) end;
+Into method label BTIF code_regex \^\^BSN1 replaceall_matched begin B1B2(\^\^BS02, \^\^BS03) end;
+
+Into method label ITLB code_regex \^\^BFC0 replaceall_matched begin B1B2(\^\^BF00, \^\^BF01) end;
+Into method label ITLB code_regex \^\^BFC1 replaceall_matched begin B1B2(\^\^BF02, \^\^BF03) end;
+
+Into method label _Q09 code_regex \^\^BFC0 replaceall_matched begin B1B2(\^\^BF00, \^\^BF01) end;
+Into method label _Q09 code_regex \^\^BRC0 replaceall_matched begin B1B2(\^\^BR00, \^\^BR01) end;
+
+Into method label BTST code_regex \^\^BPR0 replaceall_matched begin B1B2(\^\^BP00, \^\^BP01) end;
+Into method label BTST code_regex \^\^BRC0 replaceall_matched begin B1B2(\^\^BR00, \^\^BR01) end;
+Into method label BTST code_regex \^\^BPV0 replaceall_matched begin B1B2(\^\^V000, \^\^V001) end;
+
+# FIX 32 BITS
+
+into scope label ^^LPCB code_regex ECTM,\s+32 replace_matched begin TM00,8,TM01,8,TM02,8,TM03,8 end;
+into scope label ^^LPCB code_regex BTY0,\s+32 replace_matched begin BT00,8,BT01,8,BT02,8,BT03,8 end;
+into scope label ^^LPCB code_regex BTY1,\s+32 replace_matched begin BT00,8,BT01,8,BT02,8,BT03,8 end;
+
+into device label H_EC code_regex ECTM,\s+32 replace_matched begin TM00,8,TM01,8,TM02,8,TM03,8 end;
+into device label H_EC code_regex BTY0,\s+32 replace_matched begin BT00,8,BT01,8,BT02,8,BT03,8 end;
+into device label H_EC code_regex BTY1,\s+32 replace_matched begin TY00,8,TY01,8,TY02,8,TY03,8 end;
+
+Into method label GBTI code_regex \^\^BTY0 replaceall_matched begin B1B4(\^\^BT00, \^\^BT01, \^\^BT02, \^\^BT03) end;
+
+# FIX MORE THAN 32 BITS
+
+into scope label ^^LPCB code_regex (BDN0,)\s+(56) replace_matched begin BDNX,%2,//%1%2 end;
+into scope label ^^LPCB code_regex (BMN0,)\s+(128) replace_matched begin BMNX,%2,//%1%2 end;
+into scope label ^^LPCB code_regex (BCT0,)\s+(128) replace_matched begin BCTX,%2,//%1%2 end;
+
+into device label H_EC code_regex (BDN0,)\s+(56) replace_matched begin BDNX,%2,//%1%2 end;
+into device label H_EC code_regex (BMN0,)\s+(128) replace_matched begin BMNX,%2,//%1%2 end;
+into device label H_EC code_regex (BCT0,)\s+(128) replace_matched begin BCTX,%2,//%1%2 end;
+
+into method label GBTI code_regex \^\^BDN0, replaceall_matched begin RECB(0x10,56), end;
+into method label GBTI code_regex \^\^BMN0, replaceall_matched begin RECB(0x20,128), end;
+into method label GBTI code_regex \^\^BCT0, replaceall_matched begin RECB(0x30,128), end;
