@@ -48,7 +48,7 @@ end;
 
 into device label EC0 code_regex (BDN0,)\s+(64) replace_matched begin BDNX,%2,//%1%2 end;
 into device label EC0 code_regex (BMN0,)\s+(72) replace_matched begin BMNX,%2,//%1%2 end;
-into device label EC0 code_regex (SMDA,)\s+(64) replace_matched begin SMDZ,%2,//%1%2 end;
+into device label EC0 code_regex (SMDA,)\s+(256) replace_matched begin SMDZ,%2,//%1%2 end;
 into device label EC0 code_regex (FWBT,)\s+(64) replace_matched begin FWBX,%2,//%1%2 end;
 
 into method label GSBI code_regex \(BDN0, replaceall_matched begin (RECB(0x98,64), end;
@@ -63,7 +63,7 @@ into method label _BIX code_regex \(BMN0, replaceall_matched begin (RECB(0x8F,72
 
 into method label MHIF code_regex \(FWBT, replaceall_matched begin (RECB(0x14,64), end;
 into method label GBID code_regex \(FWBT, replaceall_matched begin (RECB(0x14,64), end;
-into method label MHPF code_regex \(SMDA, replaceall_matched begin (RECB(0x64,256), end;
+into method label MHPF code_regex SMDA replaceall_matched begin RECB(0x64,256), end;
 into method label BATD code_regex \(\^\^PCI0.LPCB.EC0.FWBT, replaceall_matched begin (\^\^PCI0.LPCB.EC0.RECB(0x14,64), end;
 
 # FIX 16 BITS
