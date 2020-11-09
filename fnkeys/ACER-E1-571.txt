@@ -1,0 +1,20 @@
+# Autor: Jonas Wander
+# https://hackintoshbrasil.com/forum/
+#
+# Compatível com MaciASL (fork Rehabman).
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# FN Keys Brighness
+# ACER E1 571
+# Need ApplePS2SmartTouchPad kext 
+#
+into method label _Q11 replace_content
+begin
+// Brightness Down\n
+Notify(\_SB.PCI0.LPCB.KBC0, 0x20)\n
+end;
+into method label _Q12 replace_content
+begin
+// Brightness Up\n
+Notify(\_SB.PCI0.LPCB.KBC0, 0x10)\n
+end;
