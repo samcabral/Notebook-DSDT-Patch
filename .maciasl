@@ -46,6 +46,7 @@
 [FNK] Fn Keys Positivo XCI 7660	fnkeys/positivo-xci-7660.txt
 [FNK] Fn Keys Samsung NP300XAA KF3BR	fnkeys/FnKeys-Samsung-NP300XAA-KF3BR.txt
 [I2C] --> Touchpad I2C Patches	NullPatch.txt
+[I2C] ALPS Lenovo Ideapad 330	i2c/ALPS-Lenovo-Ideapad-330.txt
 [I2C] ATMEL Samsung NP350XAA V1	i2c/ATMEL-Samsung-NP350XAA.txt
 [I2C] ATMEL Samsung NP350XAA V2	i2c/ATMEL-Samsung-NP350XAA-KFWBR.txt
 [I2C] DELL08CE Dell Inspiron 3481	i2c/DELL08CE-Dell-Inspiron-3481.txt
