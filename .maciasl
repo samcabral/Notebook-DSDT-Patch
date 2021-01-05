@@ -3,7 +3,7 @@
 [BAT] Acer E5 573	bateria/Acer-E5-573.txt
 [BAT] Acer E5 574-307M	bateria/Acer-E5-574-307M.txt
 [BAT] Acer E5 575	bateria/Acer-E5-575.txt
-[BAT] ASUS GL702VMK	bateria/ASUS-GL702VMK.txt
+[BAT] ASUS GL702VMK	bateria/ASUS-X45C-Series.txt
 [BAT] ASUS TP412U	bateria/ASUS-TP412U.txt
 [BAT] ASUS X45C Series	bateria/ASUS-X45C-Series.txt
 [BAT] ASUS X510UR-BQ291T	bateria/ASUS-X510UR-BQ291T.txt
@@ -12,12 +12,14 @@
 [BAT] Dell Inspiron 5448	bateria/Dell-Inspiron-5448.txt
 [BAT] Dell Vostro 5480	bateria/Dell-Vostro-5480.txt
 [BAT] GPD Pocket 2 MiniLaptop	bateria/GPD-Pocket-MiniLaptop.txt
-[BAT] HP 240G3	bateria/HP-240G3.txt
+[BAT] HP 240 G3	bateria/HP-240-G3.txt
+[BAT] HP 240 G7	bateria/HP-240-G7.txt
 [BAT] Itautec InfoWay Note W7730	bateria/Itautec-InfoWay-Note-W7730.txt
 [BAT] Lenovo G40-70	bateria/Lenovo-G40-70.txt
 [BAT] Lenovo G400S	bateria/Lenovo-G400S.txt
+[BAT] Lenovo Ideapad 330	bateria/Lenovo-Ideapad-330S.txt
 [BAT] Lenovo Ideapad 330S	bateria/Lenovo-Ideapad-330S.txt
-[BAT] Lenovo Ideapad S145-IKB	bateria/Lenovo-s145-ikb.txt
+[BAT] Lenovo Ideapad S145-IKB	bateria/Lenovo-Ideapad-S145-IKB.txt
 [BAT] Lenovo LNV L1325	bateria/Lenovo-LNV-L1325.txt
 [BAT] LG A530	bateria/LG-A530.txt
 [BAT] Positivo Master N190I bateria/Positivo-Master-N190I.txt
@@ -26,6 +28,7 @@
 [BAT] Positivo Premiun-XS7320	bateria/Positivo-Premiun-XS7320.txt
 [BAT] Samsung NP270E5G-XD1BR	bateria/Samsung-NP270E5G-XD1BR.txt
 [BAT] Samsung NP270E5J-XD1BR	bateria/Samsung-NP270E5J-XD1BR.txt
+[BAT] Samsung NP270E5J-XD3BR	bateria/Samsung-NP270E5J-XD1BR.txt
 [BAT] Samsung NP300E4A-BD2BR	bateria/Samsung-NP300E4A-BD2BR.txt
 [BAT] Samsung NP300E4C-AD2BR	bateria/Samsung-NP270E5G-XD1BR.txt
 [BAT] Samsung NP300E5M-XD1BR	bateria/Samsung-NP270E5J-XD1BR.txt
@@ -56,3 +59,6 @@
 [I2C] ELAN1200 ASUS X510UR	i2c/ELAN1200-ASUS-X510UR.txt
 [I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
 [I2C] Synaptics Lenovo Ideapad S145	i2c/Synaptics-Lenovo-Ideapad-S145.txt
+[OUTROS] --> Outros Patches	NullPatch.txt
+[OUTROS] Renomear EC0 para EC	outros/Renomear-EC0-EC.txt
+[OUTROS] Renomear H_EC para EC	outros/Renomear-H_EC-EC.txt
