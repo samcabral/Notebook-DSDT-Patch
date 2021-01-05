@@ -5,6 +5,7 @@
 # FnKeys Brightness para VoodooPS2 by AcidAnthera
 # Compatível com Acer Gateway NE56R13b
 #
+
 into method label _Q11 replace_content
 begin
 // Brightness Down\n

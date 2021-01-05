@@ -1,4 +1,5 @@
 # Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
 # https://hackintoshbrasil.com/forum/
 #
 # Compatível com MaciASL (fork Acidanthera)
@@ -6,8 +7,9 @@
 #
 # FnKeys Brightness para VoodooPS2 by AcidAnthera
 # 
-#Compatível com ACER F5-573G
+# Compatível com ACER F5-573G
 #
+
 into method label _Q8F replace_content
 begin
 Notify(\_SB.PCI0.LPCB.PS2K, 0x0205)\n

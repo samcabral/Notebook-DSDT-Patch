@@ -1,3 +1,4 @@
+# Grupo: Hackintosh Brasil
 # Autor: Jonas Wander
 # https://hackintoshbrasil.com/forum/
 #
@@ -8,6 +9,7 @@
 # ACER E1 571
 # Need ApplePS2SmartTouchPad kext 
 #
+
 into method label _Q11 replace_content
 begin
 // Brightness Down\n

@@ -5,8 +5,9 @@
 #
 # FnKeys Brightness para ApplePS2SmartTouchPad by EMlyDinEsH
 # 
-#Compatível com Positivo XCI 7660
+# Compatível com Positivo XCI 7660
 #
+
 into method label _Q14 replace_content
 begin
 // Brightness Down\n

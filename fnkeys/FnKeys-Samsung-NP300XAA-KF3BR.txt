@@ -4,9 +4,8 @@
 # Compatível com MaciASL (fork Rehabman).
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 #
-# FN Keys Brighness
+# FnKeys Brightness para VoodooPS2 by Rehabman
 # Samsung NP300XAA-KF3BR
-# Need VoodooPS2 kext 
 
 into method label _Q63 replace_content
 begin
