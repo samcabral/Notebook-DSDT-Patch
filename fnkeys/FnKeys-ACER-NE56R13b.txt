@@ -3,6 +3,7 @@
 # Compatível com MaciASL (fork Rehabman)
 #
 # FnKeys Brightness para VoodooPS2 by AcidAnthera
+#
 # Compatível com Acer Gateway NE56R13b
 #
 

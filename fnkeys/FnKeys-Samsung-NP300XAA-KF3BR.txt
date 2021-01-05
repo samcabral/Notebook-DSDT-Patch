@@ -6,6 +6,7 @@
 #
 # FnKeys Brightness para VoodooPS2 by Rehabman
 # Samsung NP300XAA-KF3BR
+#
 
 into method label _Q63 replace_content
 begin

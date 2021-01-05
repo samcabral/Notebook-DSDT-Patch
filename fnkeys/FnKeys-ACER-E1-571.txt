@@ -5,9 +5,8 @@
 # Compatível com MaciASL (fork Rehabman).
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 #
-# FN Keys Brighness
+# FN Keys Brighness para ApplePS2SmartTouchPad by EMlyDinEsH
 # ACER E1 571
-# Need ApplePS2SmartTouchPad kext 
 #
 
 into method label _Q11 replace_content

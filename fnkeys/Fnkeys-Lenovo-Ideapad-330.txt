@@ -6,6 +6,7 @@
 #
 # FnKeys Brightness para VoodooPS2 by Rehabman
 # Lenovo Ideapad 330
+#
 
 into method label _Q11 replace_content
 begin

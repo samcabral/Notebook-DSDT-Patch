@@ -6,6 +6,7 @@
 #
 # FnKeys Brightness para VoodooPS2 by Rehabman
 # ASUS X510UR
+#
 
 into method label _Q0E replace_content
 begin
