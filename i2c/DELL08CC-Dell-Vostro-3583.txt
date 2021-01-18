@@ -1,0 +1,30 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
+# Touchpad I2C DELL08CC
+# Dell Vostro 3583
+
+#
+# OS Check Fix (Windows 8) by Rehabman.
+#
+into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2012\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2012"))) end;
+
+into method label _STA parent_label GPI0 replace_content
+begin
+Return (0xF)
+end;
+
+into method label _STA parent_label TPD0 replace_content
+begin
+Return (0xF)
+end;
+
+into method label _CRS parent_label TPD0 replace_content
+begin
+Return (ConcatenateResTemplate (SBFB, SBFG))
+end;
+
+into DefinitionBlock code_regex If\s\(USTP\) replace_matched begin If (LOr (_OSI("Darwin"), USTP)) end;
