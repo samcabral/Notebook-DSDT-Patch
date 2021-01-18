@@ -53,8 +53,8 @@
 [I2C] ALPS Lenovo Ideapad 330	i2c/ALPS-Lenovo-Ideapad-330.txt
 [I2C] ATMEL Samsung NP350XAA V1	i2c/ATMEL-Samsung-NP350XAA.txt
 [I2C] ATMEL Samsung NP350XAA V2	i2c/ATMEL-Samsung-NP350XAA-KFWBR.txt
+[I2C] DELL08CC Dell Vostro 3583	i2c/DELL08CC-Dell-Vostro-3583.txt
 [I2C] DELL08CE Dell Inspiron 3481	i2c/DELL08CE-Dell-Inspiron-3481.txt
-[I2C] DELL08CC Dell Inspiron 3483	i2c/DELL08CC-Dell-Inspiron-3583.txt
 [I2C] ELAN Synaptics Lenovo Ideapad 320	i2c/ELAN-Synaptics-Lenovo-Ideapad-320.txt
 [I2C] ELAN Synaptics Lenovo Ideapad 330	i2c/ELAN-Synaptics-Lenovo-Ideapad-330.txt
 [I2C] ELAN1000 ASUS X556URK	i2c/ELAN1000-ASUS-X556URK.txt
