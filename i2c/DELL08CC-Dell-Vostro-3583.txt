@@ -14,12 +14,12 @@ into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2012\"\)\) replace_ma
 
 into method label _STA parent_label GPI0 replace_content
 begin
-Return (0xF)
+Return (0x0F)
 end;
 
 into method label _STA parent_label TPD0 replace_content
 begin
-Return (0xF)
+Return (0x0F)
 end;
 
 into method label _CRS parent_label TPD0 replace_content
