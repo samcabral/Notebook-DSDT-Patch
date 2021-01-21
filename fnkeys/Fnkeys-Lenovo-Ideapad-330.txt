@@ -4,19 +4,17 @@
 # Compatível com MaciASL (fork Rehabman).
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 #
-# FnKeys Brightness para VoodooPS2 by Rehabman
+# FnKeys Brightness para VoodooPS2
 # Lenovo Ideapad 330
-#
+# Lenovo Ideapad B330
 
 into method label _Q11 replace_content
 begin
 // Brightness Down\n
-Notify(\_SB.PCI0.LPCB.PS2K, 0x0205)\n
-Notify(\_SB.PCI0.LPCB.PS2K, 0x0285)\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x0405)\n
 end;
 into method label _Q12 replace_content
 begin
 // Brightness Up\n
-Notify(\_SB.PCI0.LPCB.PS2K, 0x0206)\n
-Notify(\_SB.PCI0.LPCB.PS2K, 0x0286)\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x0406)\n
 end;
