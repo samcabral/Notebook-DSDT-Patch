@@ -1,0 +1,64 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+# 
+# SAMSUNG NP550XCJ-XS1BR
+#
+
+# METHOD FOR 16 BITS - CREDITS REHABMAN
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+# METHOD FOR 32 BITS - CREDITS REHABMAN
+into method label B1B4 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B4, 4, NotSerialized)\n
+{\n
+    Store(Arg3, Local0)\n
+    Or(Arg2, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg1, ShiftLeft(Local0, 8), Local0)\n
+    Or(Arg0, ShiftLeft(Local0, 8), Local0)\n
+    Return(Local0)\n
+}\n
+end;
+
+
+#FIX 16 BITS
+
+into scope label _SB.PCI0.LPCB.H_EC code_regex BTPC,\s+16 replace_matched begin PC00,8,PC01,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex CYLC,\s+16 replace_matched begin LC00,8,LC01,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex VERS,\s+16 replace_matched begin VE00,8,VE01,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex CPUP,\s+16 replace_matched begin UP00,8,UP01,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex CFSP,\s+16 replace_matched begin SP00,8,SP01,8 end;
+
+into method label _BTP code_regex BTPC replaceall_matched begin B1B2(PC00,PC01) end;
+into method label SBIX code_regex \(CYLC replaceall_matched begin (B1B2(LC00,LC01) end;
+
+#FIX 32 BITS
+
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1RR,\s+32 replace_matched begin RR00,8,RR01,8,RR02,8,RR03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1PV,\s+32 replace_matched begin PV00,8,PV01,8,PV02,8,PV03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1AF,\s+32 replace_matched begin AF00,8,AF01,8,AF02,8,AF03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B1VL,\s+32 replace_matched begin VL00,8,VL01,8,VL02,8,VL03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B2RR,\s+32 replace_matched begin BR00,8,BR01,8,BR02,8,BR03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B2PV,\s+32 replace_matched begin BP00,8,BP01,8,BP02,8,BP03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B2AF,\s+32 replace_matched begin BA00,8,BA01,8,BA02,8,BA03,8 end;
+into scope label _SB.PCI0.LPCB.H_EC code_regex B2VL,\s+32 replace_matched begin BV00,8,BV01,8,BV02,8,BV03,8 end;
+
+into method label _BST code_regex \(B1RR replaceall_matched begin (B1B4(RR00,RR01,RR02,RR03) end;
+into method label _BST code_regex \(B1PV replaceall_matched begin (B1B4(PV00,PV01,PV02,PV03) end;
+
+into method label SBIX code_regex \(B1AF replaceall_matched begin (B1B4(AF00,AF01,AF02,AF03) end;
+into method label SBIX code_regex \(B1VL replaceall_matched begin (B1B4(VL00,VL01,VL02,VL03) end;
+
+into method label _Q66 code_regex \(B1RR replaceall_matched begin (B1B4(RR00,RR01,RR02,RR03) end;
+
+into method label QPTS code_regex \(\^PCI0.LPCB.H_EC.B1AF, replaceall_matched begin (B1B4(\^PCI0.LPCB.H_EC.AF00, \^PCI0.LPCB.H_EC.AF01, \^PCI0.LPCB.H_EC.AF02, \^PCI0.LPCB.H_EC.AF03), end;
+
+into method label QWAK code_regex \(\^PCI0.LPCB.H_EC.B1AF, replaceall_matched begin (B1B4(\^PCI0.LPCB.H_EC.AF00, \^PCI0.LPCB.H_EC.AF01, \^PCI0.LPCB.H_EC.AF02, \^PCI0.LPCB.H_EC.AF03), end;
