@@ -1,0 +1,23 @@
+
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
+# FnKeys Brightness para VoodooPS2 by AcidAnthera
+#
+# FN KEYS SAMSUNG NP550XCJ-XS1BR
+#
+
+into method label _Q63 replace_content
+begin
+// Brightness Down\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x0405)\n
+end;
+
+into method label _Q64 replace_content
+begin
+// Brightness Up\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x0406)\n
+end;
