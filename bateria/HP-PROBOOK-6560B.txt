@@ -99,5 +99,13 @@ into device label EC0 code_regex PMCD,\s+32 replace_matched begin PM00,8,PM01,8,
 
 into method label HPMC code_regex \^\^PCI0.LPCB.EC0.PMCD replaceall_matched begin B1B4(^^PCI0.LPCB.EC0.PM00, ^^PCI0.LPCB.EC0.PM01, ^^PCI0.LPCB.EC0.PM02, ^^PCI0.LPCB.EC0.PM03) end;
 
-# Disable BAT1 device
+#Disable BAT1 device
 into method label _STA parent_label BAT1 replace_content begin Return (Zero) end;
+
+#Alternate Fixes
+
+into method label GPMC code_regex \\_SB.PCI0.LPCB.EC0.CPWR replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.EC0.WR00, \\_SB.PCI0.LPCB.EC0.WR01) end;
+into method label GPMC code_regex \\_SB.PCI0.LPCB.EC0.CVLT replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.EC0.LT00, \\_SB.PCI0.LPCB.EC0.LT01) end;
+into method label GPMC code_regex \\_SB.PCI0.LPCB.EC0.CCUR replaceall_matched begin B1B2(\\_SB.PCI0.LPCB.EC0.CC00, \\_SB.PCI0.LPCB.EC0.CC01) end;
+
+into method label HPMC code_regex \\_SB.PCI0.LPCB.EC0.PMCD replaceall_matched begin B1B4(\\_SB.PCI0.LPCB.EC0.PM00, \\_SB.PCI0.LPCB.EC0.PM01, \\_SB.PCI0.LPCB.EC0.PM02, \\_SB.PCI0.LPCB.EC0.PM03) end;
