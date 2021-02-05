@@ -4,7 +4,7 @@
 # Compatível com MaciASL (fork Rehabman)
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 # 
-# HP PROBOOK 430 G6
+# HP PROBOOK 6560b
 #
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
