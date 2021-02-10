@@ -1,0 +1,17 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman).
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# FnKeys Brightness para VoodooPS2 by AcidAnthera
+# Lenovo b490
+#
+into method label _Q1D replace_content
+begin
+Notify(KBD, 0x0405)\n
+end;
+into method label _Q1C replace_content
+begin
+Notify(KBD, 0x0406)\n
+end;
