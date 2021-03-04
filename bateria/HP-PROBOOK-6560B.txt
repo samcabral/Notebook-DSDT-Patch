@@ -5,7 +5,7 @@
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 # 
 # HP PROBOOK 6560b
-#
+# HP PROBOOK 640 G1 
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
