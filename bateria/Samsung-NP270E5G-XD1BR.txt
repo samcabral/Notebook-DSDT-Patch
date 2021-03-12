@@ -6,6 +6,7 @@
 #
 # Samsung NP270E5G-XD1BR
 # Samsung NP300E4C-AD2BR
+# Samsung NP300E4C-AD7BR 
 # Samsung NP530U3C-KD2BR
 
 into device label H_EC code_regex BTPC,\s+16, replace_matched begin CP10,8,CP11,8, end;
