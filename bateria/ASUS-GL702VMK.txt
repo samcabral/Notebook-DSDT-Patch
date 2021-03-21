@@ -5,6 +5,7 @@
 # https://github.com/acidanthera/MaciASL/releases
 #
 # ASUS GL702VMK
+# ASUS S550CA
 
 into device label EC0 code_regex B0C3,\s+16, replace_matched begin XC31,8,XC32,8, end;
 into device label EC0 code_regex B0SN,\s+16, replace_matched begin XNS1,8,XNS2,8, end;
@@ -96,6 +97,12 @@ into device label EC0 code_regex BDA2,\s+256, replace_matched begin BDAY,   256,
 into method label SMBR code_regex BDAT\s+=\s+(.*) replaceall_matched begin WECB(0x1c,256,%1) end;
 into method label SMBR code_regex (.*)\s+=\s+BDAT replaceall_matched begin RECB(0x44,256) end;
 into method label SMBW code_regex BDAT\s+=\s+(.*) replaceall_matched begin WECB(0x1c,256,%1) end;
+
+into method label ECSB code_regex BDAT\s+=\s+(.*) replaceall_matched begin WECB(0x1c,256,%1) end;
+into method label ECSB code_regex ((.*))\s+=\s+BDAT replaceall_matched begin RECB(%1,256) end;
+
+into method label ECSB code_regex BDA2\s+=\s+(.*) replaceall_matched begin WECB(0x1c,256,%1) end;
+into method label ECSB code_regex ((.*))\s+=\s+BDA2 replaceall_matched begin RECB(%1,256) end;
 
 into method label RE1B parent_label EC0 remove_entry;
 into method label RECB parent_label EC0 remove_entry;

@@ -8,6 +8,7 @@
 #
 # ASUS GL702VMK
 # ASUS X45C Series
+# ASUS A43E
 
 
 into device label EC0 code_regex TAH0,\s+16, replace_matched begin XHA1,8,XHA2,8, end;
@@ -45,9 +46,10 @@ into method label BVOT code_regex B0VL replaceall_matched begin B1B2(XVL1, XVL2)
 
 into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B0RC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XCR1, ^^PCI0.LPCB.EC0.XCR2) end;
 into method label BRCP code_regex B0RC replaceall_matched begin B1B2(XCR1, XCR2) end;
-
 into method label WMNB code_regex \^\^PCI0\.LPCB\.EC0\.B0FC replaceall_matched begin B1B2(^^PCI0.LPCB.EC0.XCF1, ^^PCI0.LPCB.EC0.XCF2) end;
 into method label BIF2 code_regex B0FC replaceall_matched begin B1B2(XCF1, XCF2) end;
+
+into_all all code_regex \\_SB.PCI0.SBRG.EC0.B0DC replaceall_matched begin B1B2(\\_SB.PCI0.SBRG.EC0.XCF1, \\_SB.PCI0.SBRG.EC0.XCF2) end;
 
 into method label BIF0 code_regex B0MD replaceall_matched begin B1B2(XMD1, XMD2) end;
 into method label BIF3 code_regex B0MD replaceall_matched begin B1B2(XMD1, XMD2) end;
@@ -107,6 +109,8 @@ into method label ECSB code_regex Store\s+\((.*),\s+BDA2\) replaceall_matched be
 into method label ECSB code_regex \(BDAT, replaceall_matched begin (RECB(0x1c,256), end;
 into method label ECSB code_regex \(BDA2, replaceall_matched begin (RECB(0x44,256), end;
 into method label SMBR code_regex \(BDAT, replaceall_matched begin (RECB(0x1c,256), end;
+
+
 
 into method label RE1B parent_label EC0 remove_entry;
 into method label RECB parent_label EC0 remove_entry;
