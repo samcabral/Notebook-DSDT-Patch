@@ -3,6 +3,7 @@
 #
 # Touchpad I2C ALPS
 # Lenovo Ideapad 330
+# Lenovo Ideapad 330 (I2C ELAN)
 
 #
 # OS Check Fix (Windows 8) by Rehabman.
