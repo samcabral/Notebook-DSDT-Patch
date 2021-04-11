@@ -1,0 +1,82 @@
+# Grupo: Hackintosh Brasil
+# Autor: Samuel Cabral
+#
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
+# LG Gram 15Z980-G
+
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BDC,\s+16 replace_matched begin BBC0,8,BBC1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BFC,\s+16 replace_matched begin BBF0,8,BBF1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BDV,\s+16 replace_matched begin BBV0,8,BBV1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BSN,\s+16 replace_matched begin BBN0,8,BBN1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BPR,\s+16 replace_matched begin BBP0,8,BBP1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BRC,\s+16 replace_matched begin BBR0,8,BBR1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BPV,\s+16 replace_matched begin BBB0,8,BBB1,8 end;
+into scope label \_SB.PCI0.LPCB.H_EC code_regex CYC1,\s+16 replace_matched begin YYC0,8,YYC1,8 end;
+
+into method label XBIF code_regex =\sBDC replaceall_matched begin = B1B2 (BBC0,BBC1) end;
+into method label XBIF code_regex =\sBFC replaceall_matched begin = B1B2 (BBF0,BBF1) end;
+into method label XBST code_regex =\sBFC replaceall_matched begin = B1B2 (BBF0,BBF1) end;
+into method label XBIF code_regex =\sBDV replaceall_matched begin = B1B2 (BBV0,BBV1) end;
+into method label XBIF code_regex =\sBSN replaceall_matched begin = B1B2 (BBN0,BBN1) end;
+into method label XBST code_regex =\sBPR replaceall_matched begin = B1B2 (BBP0,BBP1) end;
+into method label XBST code_regex =\sBRC replaceall_matched begin = B1B2 (BBR0,BBR1) end;
+into method label XBST code_regex =\sBPV replaceall_matched begin = B1B2 (BBB0,BBB1) end;
+into method label XBIX code_regex =\sCYC1 replaceall_matched begin = B1B2 (YYC0,YYC1) end;
+
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+#
+# BMFG,   72,
+#
+into scope label \_SB.PCI0.LPCB.H_EC code_regex BMFG,\s+(72) replace_matched begin BMFX, %1 end;
+into method label XBIF code_regex BMFG replaceall_matched begin RECB(0x9E, 0x48) end;
+
+into method label RE1B remove_entry;
+into scope label \_SB.PCI0.LPCB.H_EC insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+end;
+
+into method label RECB remove_entry;
+into scope label \_SB.PCI0.LPCB.H_EC insert
+begin
+Method (RECB, 2, Serialized)\n
+{\n
+    ShiftRight(Add(Arg1,7), 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
+#
+# Mutex
+#
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
+into_all all code_regex Mutex\s+\(([^,]*),\s+[^)]*\) replaceall_matched begin Mutex(%1, 0) end;
