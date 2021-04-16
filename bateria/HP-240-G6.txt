@@ -1,0 +1,62 @@
+
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+# 
+# HP 240 G6 
+
+# METHOD FOR 16 BITS - CREDITS REHABMAN
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+# METHODS FOR MORE THAN 32 BITS - CREDITS REHABMAN
+into method label RE1B parent_label EC0 remove_entry;
+into method label RECB parent_label EC0 remove_entry;
+into device label EC0 insert
+begin
+Method (RE1B, 1, NotSerialized)\n
+{\n
+    OperationRegion(ERAM, EmbeddedControl, Arg0, 1)\n
+    Field(ERAM, ByteAcc, NoLock, Preserve) { BYTE, 8 }\n
+    Return(BYTE)\n
+}\n
+Method (RECB, 2, Serialized)\n
+// Arg0 - offset in bytes from zero-based EC\n
+// Arg1 - size of buffer in bits\n
+{\n
+    ShiftRight(Add(Arg1,7), 3, Arg1)\n
+    Name(TEMP, Buffer(Arg1) { })\n
+    Add(Arg0, Arg1, Arg1)\n
+    Store(0, Local0)\n
+    While (LLess(Arg0, Arg1))\n
+    {\n
+        Store(RE1B(Arg0), Index(TEMP, Local0))\n
+        Increment(Arg0)\n
+        Increment(Local0)\n
+    }\n
+    Return(TEMP)\n
+}\n
+end;
+
+# FIX 16 BITS
+
+into device label EC0 code_regex BFCC,\s+16 replace_matched begin CC00,8,CC01,8 end;
+into device label EC0 code_regex MCUR,\s+16 replace_matched begin UR00,8,UR01,8 end;
+into device label EC0 code_regex MBRM,\s+16 replace_matched begin RM00,8,RM01,8 end;
+into device label EC0 code_regex MBCV,\s+16 replace_matched begin CV00,8,CV01,8 end;
+
+into method label UPBI code_regex \(\^\^PCI0.LPCB.EC0.BFCC, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.CC00,\^\^PCI0.LPCB.EC0.CC01), end;
+into method label UPBS code_regex \(\^\^PCI0.LPCB.EC0.MCUR, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.UR00,\^\^PCI0.LPCB.EC0.UR01), end;
+into method label UPBS code_regex \(\^\^PCI0.LPCB.EC0.MBRM, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.RM00,\^\^PCI0.LPCB.EC0.RM01), end;
+into method label UPBS code_regex \(\^\^PCI0.LPCB.EC0.MBCV, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.CV00,\^\^PCI0.LPCB.EC0.CV01), end;
+
+# FIX MORE THAN 32 BITS
+
+into device label EC0 code_regex (SMD0,)\s+(256) replace_matched begin SMDZ,%2,//%1%2 end;
+
+into method label SMWR code_regex SMD0 replaceall_matched begin RECB(0x103,256) end;
