@@ -80,3 +80,5 @@
 [OUTROS] --> Outros Patches	NullPatch.txt
 [OUTROS] Renomear EC0 para EC	outros/Renomear-EC0-EC.txt
 [OUTROS] Renomear H_EC para EC	outros/Renomear-H_EC-EC.txt
+[OUTROS] Fix SBRN	outros/Fix-SBRN.txt
+
