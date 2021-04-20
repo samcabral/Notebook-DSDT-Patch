@@ -1,0 +1,21 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# Fix SBRN
+#
+into method label SBRN replace_content 
+begin 
+            If (^^^GFX0.PRST)\n
+            {\n
+                Store (^^^GFX0.GCBL, ^^^GFX0.CBLV)\n
+                Store (LBTN, Local0)\n
+                Subtract (0x0A, Local0, Local1)\n
+                If (LNotEqual (Local1, LBTN))\n
+                {\n
+                    Store (Local1, LBTN)\n
+                }\n
+            }\n
+end;
