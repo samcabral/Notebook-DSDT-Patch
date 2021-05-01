@@ -1,0 +1,47 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+# 
+# Acer F5 573g 50ks
+#
+
+# METHOD FOR 16 BITS - CREDITS REHABMAN
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+# FIX 16 BITS
+
+into device label EC0 code_regex BATD,\s+16 replace_matched begin TD00,8,TD01,8 end;
+into device label EC0 code_regex MCUR,\s+16 replace_matched begin UR00,8,UR01,8 end;
+into device label EC0 code_regex MBRM,\s+16 replace_matched begin RM00,8,RM01,8 end;
+into device label EC0 code_regex MBVG,\s+16 replace_matched begin VG00,8,VG01,8 end;
+into device label EC0 code_regex LFCC,\s+16 replace_matched begin CC00,8,CC01,8 end;
+into device label EC0 code_regex BTSN,\s+16 replace_matched begin SN00,8,SN01,8 end;
+into device label EC0 code_regex BTDC,\s+16 replace_matched begin DC00,8,DC01,8 end;
+into device label EC0 code_regex BTDV,\s+16 replace_matched begin DV00,8,DV01,8 end;
+
+into method label UBIF code_regex \(\^\^PCI0.LPCB.EC0.LFCC, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.CC00,\^\^PCI0.LPCB.EC0.CC01), end;
+into method label UBIF code_regex \(\^\^PCI0.LPCB.EC0.BTSN, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.SN00,\^\^PCI0.LPCB.EC0.SN01), end;
+into method label UBIF code_regex \(\^\^PCI0.LPCB.EC0.BTDC, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.DC00,\^\^PCI0.LPCB.EC0.DC01), end;
+into method label UBIF code_regex \(\^\^PCI0.LPCB.EC0.BTDV, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.DV00,\^\^PCI0.LPCB.EC0.DV01), end;
+
+into method label UBIX code_regex \(\^\^PCI0.LPCB.EC0.LFCC, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.CC00,\^\^PCI0.LPCB.EC0.CC01), end;
+into method label UBIX code_regex \(\^\^PCI0.LPCB.EC0.BTSN, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.SN00,\^\^PCI0.LPCB.EC0.SN01), end;
+into method label UBIX code_regex \(\^\^PCI0.LPCB.EC0.BTDC, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.DC00,\^\^PCI0.LPCB.EC0.DC01), end;
+into method label UBIX code_regex \(\^\^PCI0.LPCB.EC0.BTDV, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.DV00,\^\^PCI0.LPCB.EC0.DV01), end;
+
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.MCUR, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.UR00,\^\^PCI0.LPCB.EC0.UR01), end;
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.MBRM, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.RM00,\^\^PCI0.LPCB.EC0.RM01), end;
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.MBVG, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.VG00,\^\^PCI0.LPCB.EC0.VG01), end;
+
+into method label _Q20 code_regex \(BATD, replaceall_matched begin (B1B2(TD00,TD01), end;
+
+into method label SELE code_regex \(BATD, replaceall_matched begin (B1B2(TD00,TD01), end;
+
+
+
