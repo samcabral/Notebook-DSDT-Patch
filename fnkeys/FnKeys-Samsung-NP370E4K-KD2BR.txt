@@ -1,0 +1,21 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman).
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# FN Keys Brighness para ApplePS2SmartTouchPad by EMlyDinEsH
+# Samsung Samsung NP370E4K-KD2BR
+#
+
+into method label _Q63 replace_content
+begin
+// Brightness Down\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x20)\n
+end;
+
+into method label _Q64 replace_content
+begin
+// Brightness Up\n
+Notify(\_SB.PCI0.LPCB.PS2K, 0x10)\n
+end;
