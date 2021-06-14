@@ -5,7 +5,7 @@
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 # 
 # SAMSUNG NP550XCJ-XS1BR
-#
+# SAMSUNG NP550XCJ-XF1BR
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
