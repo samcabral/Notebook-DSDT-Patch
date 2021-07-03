@@ -5,7 +5,7 @@
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 #
 # FN Keys Brighness para ApplePS2SmartTouchPad by EMlyDinEsH
-# Samsung Samsung NP370E4K-KD2BR
+# Samsung NP370E4K-KD2BR
 #
 
 into method label _Q63 replace_content
