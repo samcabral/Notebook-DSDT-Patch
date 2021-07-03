@@ -1,0 +1,84 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman).
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# FN Keys Brighness para VoodooPS2 by AcidAnthera
+# DELL 5557
+#
+
+into method label BRT6 replace_content begin
+ If (LEqual (Arg0, One))\n
+            {\n
+                Notify (LCD, 0x86)\n
+                Notify (^^LPCB.PS2K, 0x0366)\n
+            }\n
+            \n
+            If (And (Arg0, 0x02))\n
+            {\n
+                Notify (LCD, 0x87)\n
+                Notify (^^LPCB.PS2K, 0x0365)\n
+            }\n
+end;
+
+into method label OSID replace_content begin
+  If (LEqual (ACOS, Zero))\n
+            {\n
+                Store (One, ACOS)\n
+                Store (Zero, ACSE)\n
+                If (CondRefOf (\_OSI, Local0))\n
+                {\n
+                    If (_OSI (WXP))\n
+                    {\n
+                        Store (0x10, ACOS)\n
+                    }\n
+                    \n
+                    If (_OSI (WLG))\n
+                    {\n
+                        Store (0x20, ACOS)\n
+                    }\n
+                    \n
+                    If (_OSI (WIN7))\n
+                    {\n
+                        Store (0x80, ACOS)\n
+                    }\n
+                    \n
+                    If (LOr (_OSI ("Darwin"), _OSI (WIN8)))\n
+                    {\n
+                        Store (0x80, ACOS)\n
+                        Store (One, ACSE)\n
+                    }\n
+                    \n
+                    If (_OSI (WN81))\n
+                    {\n
+                        Store (0x80, ACOS)\n
+                        Store (0x02, ACSE)\n
+                    }\n
+                    \n
+                    If (_OSI (LINX))\n
+                    {\n
+                        Store (0x40, ACOS)\n
+                    }\n
+                }\n
+                Else\n
+                {\n
+                    If (STRE (_OS, W98S))\n
+                    {\n
+                        Store (0x02, ACOS)\n
+                    }\n
+                    \n
+                    If (STRE (_OS, WINM))\n
+                    {\n
+                        Store (0x04, ACOS)\n
+                    }\n
+                    \n
+                    If (STRE (_OS, NT5S))\n
+                    {\n
+                        Store (0x08, ACOS)\n
+                    }\n
+                }\n
+            }\n
+            \n
+            Return (ACOS)\n
+end;
