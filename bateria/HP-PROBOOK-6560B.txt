@@ -6,6 +6,7 @@
 # 
 # HP PROBOOK 6560b
 # HP PROBOOK 640 G1 
+# HP EliteBook 8460p
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
