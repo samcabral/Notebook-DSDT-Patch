@@ -1,0 +1,30 @@
+
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# Fix AWAC
+#
+# Este patch desativa o AWAC e força a ativação do RTC
+# Este patch pode ser usado em placas-mãe séries 300 em diante
+# Pesquise na sua DSDT se existe o Device (AWAC) ou ACPI000E
+#
+into method label _STA parent_label AWAC remove_entry;
+into device label AWAC insert
+begin
+Method (_STA, 0, NotSerialized)\n
+{\n
+Return (Zero)\n
+ }\n
+end;
+
+into method label _STA parent_label RTC remove_entry;
+into device label RTC insert
+begin
+Method (_STA, 0, NotSerialized)\n
+{\n
+Return (0x0F)\n
+ }\n
+end;
