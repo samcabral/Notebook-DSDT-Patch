@@ -6,7 +6,7 @@
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 # 
 # Samsung NP300E4A-BD2BR
-#
+# Samsung RV420
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
