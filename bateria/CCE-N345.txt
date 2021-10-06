@@ -1,0 +1,41 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+# 
+# CCE  Ultra Thin N345
+#
+
+# METHOD FOR 16 BITS - CREDITS REHABMAN
+into method label B1B2 remove_entry;
+into definitionblock code_regex . insert
+begin
+Method (B1B2, 2, NotSerialized) { Return(Or(Arg0, ShiftLeft(Arg1, 8))) }\n
+end;
+
+# FIX 16 BITS
+
+into device label EC0 code_regex XST0,\s+16 replace_matched begin ST00,8,ST01,8 end;
+into device label EC0 code_regex XST1,\s+16 replace_matched begin ST10,8,ST11,8 end;
+into device label EC0 code_regex XST2,\s+16 replace_matched begin ST20,8,ST21,8 end;
+into device label EC0 code_regex XST3,\s+16 replace_matched begin ST30,8,ST31,8 end;
+
+into device label EC0 code_regex XIF0,\s+16 replace_matched begin F000,8,F001,8 end;
+into device label EC0 code_regex XIF1,\s+16 replace_matched begin F100,8,F101,8 end;
+into device label EC0 code_regex XIF2,\s+16 replace_matched begin F200,8,F201,8 end;
+into device label EC0 code_regex XIF3,\s+16 replace_matched begin F300,8,F301,8 end;
+into device label EC0 code_regex XIF4,\s+16 replace_matched begin F400,8,F401,8 end;
+into device label EC0 code_regex XIF7,\s+16 replace_matched begin F700,8,F701,8 end;
+
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.XST0, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.ST00,\^\^PCI0.LPCB.EC0.ST01), end;
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.XST1, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.ST10,\^\^PCI0.LPCB.EC0.ST11), end;
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.XST2, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.ST20,\^\^PCI0.LPCB.EC0.ST21), end;
+into method label _BST code_regex \(\^\^PCI0.LPCB.EC0.XST3, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.ST30,\^\^PCI0.LPCB.EC0.ST31), end;
+
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF0, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F000,\^\^PCI0.LPCB.EC0.F001), end;
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF1, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F100,\^\^PCI0.LPCB.EC0.F101), end;
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF2, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F200,\^\^PCI0.LPCB.EC0.F201), end;
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF3, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F300,\^\^PCI0.LPCB.EC0.F301), end;
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF4, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F400,\^\^PCI0.LPCB.EC0.F401), end;
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF7, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F700,\^\^PCI0.LPCB.EC0.F701), end;N
