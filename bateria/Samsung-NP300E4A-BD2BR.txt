@@ -7,6 +7,7 @@
 # 
 # Samsung NP300E4A-BD2BR
 # Samsung RV420
+# Samsung RV411
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
