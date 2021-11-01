@@ -1,0 +1,17 @@
+
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# Fake EC
+# Este patch cria uma entrada EC para dispositivos que não possuem nenhum tipo de EC(ECDV, H_EC, EC0, etc)
+#
+into definitionblock code_regex . insert
+begin
+Device (EC)\n
+{\n
+Name (_HID, "EC000000")  // _HID: Hardware ID\n
+}\n
+end;
