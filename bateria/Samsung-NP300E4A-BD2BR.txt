@@ -1,6 +1,6 @@
 # Grupo: Hackintosh Brasil
 # Autor: Jonas Wander
-# https://hackintoshbrasil.com/forum
+# https://hackintoshbrasil.com
 #
 # Compatível com MaciASL (fork Rehabman)
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
