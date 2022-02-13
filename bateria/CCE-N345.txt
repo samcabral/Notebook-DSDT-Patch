@@ -38,4 +38,4 @@ into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF1, replaceall_matched b
 into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF2, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F200,\^\^PCI0.LPCB.EC0.F201), end;
 into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF3, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F300,\^\^PCI0.LPCB.EC0.F301), end;
 into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF4, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F400,\^\^PCI0.LPCB.EC0.F401), end;
-into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF7, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F700,\^\^PCI0.LPCB.EC0.F701), end;N
+into method label _BIF code_regex \(\^\^PCI0.LPCB.EC0.XIF7, replaceall_matched begin (B1B2(\^\^PCI0.LPCB.EC0.F700,\^\^PCI0.LPCB.EC0.F701), end;
