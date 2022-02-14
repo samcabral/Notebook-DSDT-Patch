@@ -22,11 +22,11 @@
 [BAT] HP 240 G3	bateria/HP-240-G3.txt
 [BAT] HP 240 G6	bateria/HP-240-G6.txt
 [BAT] HP 240 G7	bateria/HP-240-G7.txt
+[BAT] HP EliteBook 8460p	bateria/HP-PROBOOK-6560B.txt
 [BAT] HP Laptop 15-da1xxx	bateria/HP-Laptop-15-da1xxx.txt
 [BAT] HP Probook 430 G6	bateria/HP-PROBOOK-430-G6.txt
 [BAT] HP Probook 6560b	bateria/HP-PROBOOK-6560B.txt
 [BAT] HP Probook 640 G1	bateria/HP-PROBOOK-6560B.txt
-[BAT] HP EliteBook 8460p bateria/HP-PROBOOK-6560B.txt
 [BAT] Itautec InfoWay Note W7730	bateria/Itautec-InfoWay-Note-W7730.txt
 [BAT] Lenovo G40-70	bateria/Lenovo-G40-70.txt
 [BAT] Lenovo G40-80	bateria/Lenovo-G40-80.txt
@@ -57,6 +57,7 @@
 [BAT] Samsung NP550XCJ-XF1BR	bateria/Samsung-NP550XCJ-XS1BR.txt
 [BAT] Samsung NP550XCJ-XS1BR	bateria/Samsung-NP550XCJ-XS1BR.txt
 [BAT] Samsung NP800G5M-XG1BR	bateria/Samsung-NP800G5M-XG1BR.txt
+[BAT] Samsung RV411	bateria/Samsung-NP300E4A-BD2BR.txt
 [BAT] Samsung RV420	bateria/Samsung-NP300E4A-BD2BR.txt
 [BAT] Sony Vaio SVS13A17GBB	bateria/Sony-Vaio-SVS13A17GBB.txt
 [FNK] --> FnKeys Patches	NullPatch.txt
