@@ -35,3 +35,10 @@ If (_OSI ("Darwin"))\n
 }\n
 %1
 end;
+
+
+into method label SPTP insert
+begin
+Name (SSCN, Package () { 0x01B0, 0x01FB, 0x1E })\n
+Name (FMCN, Package () { 0x48, 0xA0, 0x1E })
+end;
