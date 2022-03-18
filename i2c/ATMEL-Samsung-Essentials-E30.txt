@@ -27,7 +27,7 @@ If (_OSI ("Darwin"))\n
 %1
 end;
 
-into method label _STA parent_label SPTP code_regex ([\s\S]*) replace_matched
+into method label _CRS parent_label SPTP code_regex ([\s\S]*) replace_matched
 begin
 If (_OSI ("Darwin"))\n
 {\n
@@ -35,7 +35,6 @@ If (_OSI ("Darwin"))\n
 }\n
 %1
 end;
-
 
 into method label SPTP insert
 begin
