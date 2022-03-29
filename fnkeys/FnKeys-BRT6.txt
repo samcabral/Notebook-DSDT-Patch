@@ -1,0 +1,21 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+# https://hackintoshbrasil.com
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+# 
+# FN Keys Brighness para método BRT6
+# Necessita da VoodooPS2 by AcidAnthera
+#
+into method label BRT6 replace_content begin
+If (LEqual (Arg0, One)) \n
+            { \n
+                Notify(\_SB.PCI0.LPCB.PS2K, 0x0406)\n
+            } \n
+              \n
+            If (And (Arg0, 0x02)) \n
+            {\n
+                Notify(\_SB.PCI0.LPCB.PS2K, 0x0405)\n
+            } \n
+end;
