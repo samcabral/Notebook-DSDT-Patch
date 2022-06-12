@@ -6,7 +6,7 @@
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 # 
 # Lenovo IdeaPad S145-IKB
-#
+# Lenovo IdeaPad S145-IWL
 #
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
