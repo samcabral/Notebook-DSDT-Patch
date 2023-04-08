@@ -1,4 +1,4 @@
-nto method label DTGP remove_entry;
+into method label DTGP remove_entry;
 into definitionblock code_regex . insert
 begin
 Method (DTGP, 5, NotSerialized)\n
