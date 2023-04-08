@@ -91,6 +91,7 @@
 [I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
 [I2C] Synaptics Lenovo Ideapad S145	i2c/Synaptics-Lenovo-Ideapad-S145.txt
 [OUTROS] --> Outros Patches	NullPatch.txt
+[OUTROS] Insert DTGP	outros/DTGP.txt
 [OUTROS] Fake EC	outros/Fake-EC.txt
 [OUTROS] Fix AWAC	outros/Fix-AWAC.txt
 [OUTROS] Fix SBRN	outros/Fix-SBRN.txt
