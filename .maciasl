@@ -79,6 +79,7 @@
 [FNK] Fn Keys Samsung NP300XAA KF3BR	fnkeys/FnKeys-Samsung-NP300XAA-KF3BR.txt
 [FNK] Fn Keys Samsung NP370E4K KD2BR	fnkeys/FnKeys-Samsung-NP370E4K-KD2BR.txt
 [FNK] Fn Keys Samsung NP550XCJ XS1BR	fnkeys/FnKeys-Samsung-NP550XCJ-XS1BR.txt
+[FNK] Fn Keys BRT6 patch	fnkeys/FnKeys-BRT6.txt
 [I2C] --> Touchpad I2C Patches	NullPatch.txt
 [I2C] ALPS ELAN Lenovo Ideapad 330 / B330	i2c/ALPS-ELAN-Lenovo-Ideapad-330-B330.txt
 [I2C] ATMEL Samsung Essentials E30	i2c/ATMEL-Samsung-Essentials-E30.txt
