@@ -1,0 +1,24 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+# https://hackintoshbrasil.com
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# Insert PMCR
+into_all device label PMCR remove_entry;
+into device name_adr 0x001F0000 insert
+begin
+Device (PMCR)\n
+            {\n
+                Name (_HID, EisaId ("APP9876"))  // _HID: Hardware ID\n
+                Name (_STA, 0x0B)  // _STA: Status\n
+	       Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings\n
+                {\n
+                    Memory32Fixed (ReadWrite,\n
+                        0xFE000000,         // Address Base\n
+                        0x00010000,         // Address Length\n
+                        )\n
+                })\n
+            }\n
+end
