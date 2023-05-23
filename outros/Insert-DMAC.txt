@@ -1,0 +1,45 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+# https://hackintoshbrasil.com
+#
+# Compatível com MaciASL (fork Rehabman)
+# https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
+#
+# Insert DMAC
+into_all device label DMAC remove_entry;
+into device name_adr 0x001F0000 insert
+begin
+Device (DMAC)\n
+                {\n
+                    Name (_HID, EisaId ("PNP0200"))  // _HID: Hardware ID\n
+                    Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings\n
+                    {\n
+                        IO (Decode16,\n
+                            0x0000,             // Range Minimum\n
+                            0x0000,             // Range Maximum\n
+                            0x01,               // Alignment\n
+                            0x20,               // Length\n
+                            )\n
+                        IO (Decode16,\n
+                            0x0081,             // Range Minimum\n
+                            0x0081,             // Range Maximum\n
+                            0x01,               // Alignment\n
+                            0x11,               // Length\n
+                            )\n
+                        IO (Decode16,\n
+                            0x0093,             // Range Minimum\n
+                            0x0093,             // Range Maximum\n
+                            0x01,               // Alignment\n
+                            0x0D,               // Length\n
+                            )\n
+                        IO (Decode16,\n
+                            0x00C0,             // Range Minimum\n
+                            0x00C0,             // Range Maximum\n
+                            0x01,               // Alignment\n
+                            0x20,               // Length\n
+                            )\n
+                        DMA (Compatibility, NotBusMaster, Transfer8_16, )\n
+                            {4}\n
+                    })\n
+                }\n
+end
