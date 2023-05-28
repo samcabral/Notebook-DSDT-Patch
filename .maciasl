@@ -87,6 +87,7 @@
 [I2C] DELL08CE Dell Inspiron 3481	i2c/DELL08CE-Dell-Inspiron-3481.txt
 [I2C] ELAN Synaptics Lenovo Ideapad 320	i2c/ELAN-Synaptics-Lenovo-Ideapad-320.txt
 [I2C] ELAN Synaptics Lenovo Ideapad 330	i2c/ELAN-Synaptics-Lenovo-Ideapad-330.txt
+[I2C] ELAN0504 Acer A515-54	i2c/ELAN0504-Acer-A515-54.txt
 [I2C] ELAN1000 ASUS X556URK	i2c/ELAN1000-ASUS-X556URK.txt
 [I2C] ELAN1200 ASUS X510UR	i2c/ELAN1200-ASUS-X510UR.txt
 [I2C] Synaptics Lenovo Ideapad 330S	i2c/Synaptics-Lenovo-Ideapad-330S.txt
