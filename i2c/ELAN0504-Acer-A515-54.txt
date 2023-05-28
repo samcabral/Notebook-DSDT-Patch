@@ -1,0 +1,22 @@
+# Grupo: Hackintosh Brasil
+# Autor: Jonas Wander
+#
+# Compatível com MaciASL (fork Acidanthera)
+# https://github.com/acidanthera/MaciASL/releases
+#
+# Touchpad I2C ELAN
+# Acer Aspire A515-54 - 10gen
+
+into method label _STA parent_label GPI0 replace_content
+begin
+Return (0x0F)
+end;
+
+into method label _STA parent_label TPD0 replace_content
+begin
+Return (0x0F)
+end;
+
+# Windows 8.1 DSDT Patch for by RehabMan
+into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2013\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2013"))) end;
+
