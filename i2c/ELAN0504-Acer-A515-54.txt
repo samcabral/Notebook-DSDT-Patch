@@ -20,3 +20,35 @@ end;
 # Windows 8.1 DSDT Patch for by RehabMan
 into_all method code_regex If\s+\([\\]?_OSI\s+\(\"Windows\s2013\"\)\) replace_matched begin If(LOr(_OSI("Darwin"),_OSI("Windows 2013"))) end;
 
+into device label I2C0 insert
+begin
+Method (PKGX, 3, Serialized)\n
+        {\n
+            Name (PKG, Package (0x03)\n
+            {\n
+                Zero,\n
+                Zero,\n
+                Zero\n
+            })\n
+            Store (Arg0, Index (PKG, Zero))\n
+            Store (Arg1, Index (PKG, One))\n
+            Store (Arg2, Index (PKG, 0x02))\n
+            Return (PKG)\n
+        }\n
+	\n
+        Method (SSCN, 0, NotSerialized)\n
+        {\n
+            Return (PKGX (SSH0, SSL0, SSD0))\n
+        }\n
+	\n
+        Method (FMCN, 0, NotSerialized)\n
+        {\n
+            Name (PKG, Package (0x03)\n
+            {\n
+                0x0101,\n
+                0x012C,\n 
+                0x62\n
+            })\n
+            Return (PKG)\n
+        }\n
+end;
