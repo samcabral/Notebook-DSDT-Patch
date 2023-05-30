@@ -5,7 +5,7 @@
 # https://bitbucket.org/RehabMan/os-x-maciasl-patchmatic/downloads/
 # 
 # Acer F5 573g 50ks
-#
+# Acer A515-54
 
 # METHOD FOR 16 BITS - CREDITS REHABMAN
 into method label B1B2 remove_entry;
